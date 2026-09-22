@@ -1,6 +1,6 @@
-/*   
-   ANNOUNCEMENT BAR (ROTATING CAROUSEL & CONTROLS)
-      */
+/* =========================================================
+   LUXURY ANNOUNCEMENT BAR (ROTATING CAROUSEL & CONTROLS)
+   ========================================================= */
 .announcement-bar {
   background-color: var(--cabernet-dark, #24050a);
   color: #FAF6F0;
@@ -150,12 +150,12 @@
     letter-spacing: 0.6px;
   }
 }
-/*   
-     HORIZONTAL FILTER BAR
-      */
+/* =========================================================
+   NEW: SUPER PROFESSIONAL HORIZONTAL FILTER BAR
+   ========================================================= */
 .catalog-layout-pro {
   width: 100%;
-  display: block; 
+  display: block; /* Removes sidebar grid */
 }
 
 .pro-toolbar {
@@ -256,9 +256,9 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
-/*   
+/* =========================================================
    NEW CATALOG: VISUAL CIRCLES, SIDEBAR & GRID
-      */
+   ========================================================= */
 
    .catalog-section {
   padding: 4rem 5%;
@@ -267,9 +267,9 @@
 }
 
 /* 1. Circular Visual Categories */
-/*   
+/* =========================================================
    1. Circular Visual Categories (Balanced Size)
-      */
+   ========================================================= */
 .visual-category-row {
   display: flex;
   flex-wrap: wrap; /* THIS FIXES THE CROPPING: Allows items to drop to a new line */
@@ -496,9 +496,9 @@
   }
 }
 
-/*   
+/* =========================================================
    1. DESIGN TOKENS & COLOR PALETTE
-      */
+   ========================================================= */
 :root {
   /* Exact Cabernet & Light Maroon Palette */
   --maroon-light: #7A1720;    /* Classic Light Maroon / Wine */
@@ -554,9 +554,9 @@
   --shadow-lg: 0 20px 48px rgba(43, 5, 11, 0.18);
 }
 
-/*   
+/* =========================================================
    2. RESET & BASE STYLES
-      */
+   ========================================================= */
 * {
   margin: 0;
   padding: 0;
@@ -689,12 +689,12 @@ img {
 }
 
 
-/*   
+/* =========================================================
    4. STICKY HEADER (LOGO LEFT, MENU CENTER, ACTIONS RIGHT)
-      */
-/*   
+   ========================================================= */
+/* =========================================================
    4. DYNAMIC HIDE/SHOW ON SCROLL HEADER WRAPPER
-      */
+   ========================================================= */
 :root {
   --header-total-height: 102px;
 }
@@ -936,9 +936,9 @@ img {
   pointer-events: none;
 }
 
-/*   
+/* =========================================================
    5. MOBILE SLIDE-OUT NAVIGATION DRAWER
-      */
+   ========================================================= */
 body.drawer-open {
   overflow: hidden !important;
   touch-action: none;
@@ -980,9 +980,9 @@ body.drawer-open {
 .mobile-drawer-brand {
   display: inline-flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  text-align: left;
+  text-align: center;
 }
 
 .mobile-brand-title {
@@ -993,21 +993,23 @@ body.drawer-open {
   line-height: 1;
   letter-spacing: 0;
   text-transform: none;
-  margin: 0;
-  text-align: left;
+  margin: 0 auto;
+  text-align: center;
   display: block;
   -webkit-text-stroke: 0.35px var(--maroon-light);
 }
 
 .mobile-brand-sub {
+  font-family: 'Jost', 'Montserrat', sans-serif;
   font-size: 0.52rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-muted);
   display: block;
-  margin-top: 2px;
-  text-align: left;
+  margin: 2px auto 0 auto;
+  text-align: center;
   white-space: nowrap;
+  width: 100%;
 }
 
 .btn-close {
@@ -1125,9 +1127,9 @@ body.drawer-open {
   word-break: break-word;
   padding: 0.2rem 0;
 }
-/*   
+/* =========================================================
    6. LUXURY WELCOME HERO (CABERNET & LIGHT MAROON WITH GOLDEN CANDLES)
-      */
+   ========================================================= */
 .welcome-hero {
   position: relative;
   background: radial-gradient(circle at 50% 45%, var(--maroon-light) 0%, var(--cabernet) 60%, var(--cabernet-dark) 100%);
@@ -1333,9 +1335,9 @@ body.drawer-open {
   flex-wrap: wrap;
 }
 
-/*   
+/* =========================================================
    FIXED: PERFECTLY CENTERED SCROLL INDICATOR
-      */
+   ========================================================= */
 .scroll-cue {
   position: absolute;
   bottom: 28px;
@@ -1366,9 +1368,9 @@ body.drawer-open {
     opacity: 1;
   }
 }
-/*   
+/* =========================================================
    7. TRUST PILLARS STRIP
-      */
+   ========================================================= */
 .trust-strip {
   background-color: #FAF6F0;
   border-bottom: 1px solid var(--border-subtle);
@@ -1405,9 +1407,9 @@ body.drawer-open {
   text-transform: uppercase;
 }
 
-/*   
+/* =========================================================
    8. CATALOG CONTROLS (SEARCH & TABS)
-      */
+   ========================================================= */
 .catalog-section {
   padding: 5.5rem 5%;
 }
@@ -1477,9 +1479,9 @@ body.drawer-open {
   border-color: var(--maroon-light);
 }
 
-/*   
+/* =========================================================
    9. 30-SKU PRODUCT GRID & CARDS
-      */
+   ========================================================= */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1624,9 +1626,9 @@ body.drawer-open {
   color: #FFFFFF;
 }
 
-/*   
+/* =========================================================
    10. EDITORIAL BANNERS (DÉCOR & JOURNAL)
-      */
+   ========================================================= */
 .banner-section {
   padding: 2.5rem 5%;
 }
@@ -1684,9 +1686,9 @@ body.drawer-open {
   min-height: 400px;
 }
 
-/*   
+/* =========================================================
    11. BRAND STORY SECTION
-      */
+   ========================================================= */
 .story-section {
   padding: 5.5rem 5%;
 }
@@ -1715,9 +1717,9 @@ body.drawer-open {
   line-height: 1.8;
 }
 
-/*   
+/* =========================================================
    12. FAQS ACCORDION
-      */
+   ========================================================= */
 .faq-section {
   padding: 5.5rem 5%;
   max-width: 880px;
@@ -1771,9 +1773,9 @@ body.drawer-open {
   transform: rotate(180deg);
 }
 
-/*   
+/* =========================================================
    13. DRAWERS & MODALS (CART, PDP, CHECKOUT, POLICY)
-      */
+   ========================================================= */
 .drawer-overlay {
   position: fixed;
   inset: 0;
@@ -1926,9 +1928,9 @@ body.drawer-open {
   margin-bottom: 1rem;
 }
 
-/*   
+/* =========================================================
    WISHLIST DRAWER (SLIDE-OUT SANCTUARY)
-      */
+   ========================================================= */
 .wishlist-drawer {
   position: fixed;
   top: 0;
@@ -2240,9 +2242,9 @@ body.drawer-open {
   color: var(--maroon-dark);
 }
 
-/*   
+/* =========================================================
    HEADER SEARCH MODAL / OVERLAY
-      */
+   ========================================================= */
 .search-overlay {
   position: fixed;
   top: 0;
@@ -3059,9 +3061,9 @@ body.drawer-open {
   color: var(--text-muted);
 }
 
-/*   
+/* =========================================================
    CHECKOUT ORDER SUMMARY & DISCOUNT CODES
-      */
+   ========================================================= */
 
 /* Order Summary Box */
 .checkout-order-summary {
@@ -3464,9 +3466,9 @@ body.drawer-open {
   color: var(--text-muted);
 }
 
-/*   
+/* =========================================================
    14. FLOATING WHATSAPP & MOBILE APP BAR
-      */
+   ========================================================= */
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
@@ -3544,9 +3546,9 @@ body.drawer-open {
   pointer-events: auto;
 }
 
-/*   
+/* =========================================================
    15. FOOTER
-      */
+   ========================================================= */
 .site-footer {
   background: var(--cabernet-dark);
   color: rgba(250, 246, 240, 0.8);
@@ -3625,9 +3627,9 @@ body.drawer-open {
   color: rgba(255, 255, 255, 0.45);
 }
 
-/*   
+/* =========================================================
    16. RESPONSIVE BREAKPOINTS (TABLETS & MOBILE)
-      */
+   ========================================================= */
 
 /* -------------------------------------------
    TABLET SCREENS (1024px and below)
@@ -3841,11 +3843,11 @@ body.drawer-open {
     gap: 1rem;
   }
 }
-/*   
+/* =========================================================
    CANDLEIER RESPONSIVE SYSTEM — FINAL OVERRIDES
    Designed for 320px phones → large desktop / 4K
    Keeps the existing visual design and only fixes sizing/layout.
-      */
+   ========================================================= */
 
 html {
   width: 100%;
@@ -4994,10 +4996,10 @@ select {
     transition-duration: 0.01ms !important;
   }
 }
-/*   
+/* =========================================================
    HARMONIZED RESPONSIVE GRID & ALIGNMENT SYSTEM
    Precision-calibrated for all screens: 320px → 4K
-      */
+   ========================================================= */
 
 /* --- Universal Product Grid (Catalog, Category, All Products) --- */
 .catalog-layout-pro .product-grid,
@@ -5527,10 +5529,10 @@ select {
   }
 }
 
-/*   
+/* =========================================================
    .SHOP LUXURY REDESIGN: RITUALS & NEW ARRIVALS
    (Preserving all brand theme variables and typography)
-      */
+   ========================================================= */
 
 .km-rituals-section,
 .km-arrivals-section {
@@ -6346,9 +6348,9 @@ select {
   }
 }
 
-/*   
+/* =========================================================
    STICKY HEADER SCROLLED STATE & SAFE AREA INSETS
-      */
+   ========================================================= */
 .site-header.is-scrolled {
   background: rgba(253, 250, 246, 0.98);
   backdrop-filter: blur(14px);
@@ -6374,9 +6376,9 @@ select {
   }
 }
 
-/*   
+/* =========================================================
     FULL CATALOG & COLLECTION DESIGN SYSTEM
-      */
+   ========================================================= */
 
 /* 1. Grid Adaptation for km-product-card */
 .product-grid .km-product-card {
@@ -7037,9 +7039,9 @@ select {
   }
 }
 
-/*   
+/* =========================================================
    17. -INSPIRED LUXURY FOOTER ENHANCEMENTS
-      */
+   ========================================================= */
 .site-footer {
   background: var(--cabernet-dark, #2B050B);
   color: rgba(250, 246, 240, 0.85);
@@ -7529,9 +7531,9 @@ select {
   color: #166534;
 }
 
-/*   
+/* =========================================================
    18. DEDICATED POLICY & LEGAL PAGES STYLING
-      */
+   ========================================================= */
 .policy-page-wrapper {
   background: var(--bg-cream, #FAF6F0);
   min-height: 80vh;
@@ -8006,9 +8008,9 @@ select {
   }
 }
 
-/*   
+/* =========================================================
    THE CANDLEIER — CUSTOMER ACCOUNT & ORDER MANAGEMENT SYSTEM
-      */
+   ========================================================= */
 
 /* Header Authentication & Dropdown */
 .action-btn.authenticated {
@@ -8337,9 +8339,9 @@ select {
   padding: 3.2rem 2.5rem;
 }
 
-/*   
+/* =========================================================
    ACCOUNT DASHBOARD & SECTIONS
-      */
+   ========================================================= */
 .account-container {
   max-width: 1180px;
   margin: 0 auto;
@@ -8678,9 +8680,9 @@ select {
   line-height: 1.6;
 }
 
-/*   
+/* =========================================================
    ORDERS LIST PAGE & ORDER DETAILS
-      */
+   ========================================================= */
 .order-card-row {
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
@@ -8802,9 +8804,9 @@ select {
   margin-top: 0.75rem;
 }
 
-/*   
+/* =========================================================
    ORDER TRACKING TIMELINE
-      */
+   ========================================================= */
 .tracking-container {
   max-width: 820px;
   margin: 0 auto;
@@ -9002,9 +9004,9 @@ select {
   font-weight: 500;
 }
 
-/*   
+/* =========================================================
    SAVED ADDRESSES CARDS & MODAL
-      */
+   ========================================================= */
 .addresses-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -9164,9 +9166,9 @@ select {
   overflow-y: auto;
 }
 
-/*   
+/* =========================================================
    RESPONSIVE OPTIMIZATIONS ACROSS ALL SCREEN SIZES
-      */
+   ========================================================= */
 @media (max-width: 900px) {
   .auth-split-card {
     grid-template-columns: 1fr;
@@ -9269,10 +9271,10 @@ select {
   }
 }
 
-/*   
+/* =========================================================
    THE CANDLEIER — PREMIUM ADDRESS SYSTEM & MODAL ARCHITECTURE
    Luxury E-Commerce Addresses, Location Detection, & Validation
-      */
+   ========================================================= */
 
 /* Universal Modal Overlay Support */
 .modal-overlay,
