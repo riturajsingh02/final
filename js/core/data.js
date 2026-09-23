@@ -1218,49 +1218,23 @@ const CANDLE_INVENTORY = [
     stock: 25
   },
 
-  // 15. NEROLI REED DIFFUSER
+  // 15. REED DIFFUSER (Variants: Oud & Neroli)
   {
     id: 46,
-    handle: "neroli-reed-diffuser",
-    title: "Neroli Reed Diffuser",
+    handle: "reed-diffuser",
+    title: "Reed Diffuser",
     category: "Diffusers and Aromas",
-    price: 849,
-    origPrice: 999,
-    burn: "60-90 Days Continuous Aroma",
-    badge: "NEW ARRIVAL",
-    isComingSoon: false,
-    notes: {
-      top: "Pure Tunisian Neroli & Petitgrain",
-      heart: "Orange Blossom & White Lily",
-      base: "Sunlit Musk & Blonde Woods"
-    },
-    image: "asset/Neroli Reed Diffuser.jpg",
-    images: [
-      "asset/Neroli Reed Diffuser.jpg",
-      "asset/Neroli Reed Diffuser_2.jpg",
-      "asset/Neroli Reed Diffuser_3.jpg",
-      "asset/Neroli Reed Diffuser_4.jpg"
-    ],
-    desc: "Flame-free continuous therapeutic home fragrance infused with genuine cold-pressed neroli essential oil and natural rattan reeds.",
-    dimensions: "150ml Glass Apothecary Bottle + 8 Reeds",
-    stock: 30
-  },
-
-  // 16. OUD REED DIFFUSER
-  {
-    id: 51,
-    handle: "oud-reed-diffuser",
-    title: "Oud Reed Diffuser",
-    category: "Diffusers and Aromas",
+    variantType: "color",
+    variantTypeLabel: "Aroma & Scent",
     price: 849,
     origPrice: 999,
     burn: "60-90 Days Continuous Aroma",
     badge: "BESTSELLER",
     isComingSoon: false,
     notes: {
-      top: "Smoky Incense & Cardamom",
-      heart: "Royal Cambodian Oud & Rosewood",
-      base: "Dark Vetiver, Tonka & Amber"
+      top: "Royal Cambodian Oud & Tunisian Neroli",
+      heart: "Incense, Rosewood & Orange Blossom",
+      base: "Dark Vetiver, Tonka & Sunlit Woods"
     },
     image: "asset/Oud Reed Diffuser.jpg",
     images: [
@@ -1269,9 +1243,61 @@ const CANDLE_INVENTORY = [
       "asset/Oud Reed Diffuser_3.jpg",
       "asset/Oud Reed Diffuser_4.jpg"
     ],
-    desc: "Luxurious deep oriental oud fragrance in an amber apothecary vessel with porous black micro-fiber reeds.",
+    desc: "Flame-free continuous therapeutic home fragrance infused with concentrated botanical essential oils and porous natural rattan reeds in an artisan apothecary vessel.",
     dimensions: "150ml Glass Bottle + 8 Reeds",
-    stock: 24
+    stock: 54,
+    variants: [
+      {
+        id: "reed-diffuser-oud",
+        title: "Oud",
+        colorHex: "#4a2c11",
+        price: 849,
+        origPrice: 999,
+        burn: "60-90 Days Continuous Aroma",
+        dimensions: "150ml Glass Bottle + 8 Reeds",
+        available: true,
+        stock: 24,
+        badge: "BESTSELLER",
+        notes: {
+          top: "Smoky Incense & Cardamom",
+          heart: "Royal Cambodian Oud & Rosewood",
+          base: "Dark Vetiver, Tonka & Amber"
+        },
+        desc: "The Oud Reed Diffuser delivers a rich, opulent oriental aura with notes of rare smoky agarwood, cardamom, and dark amber. Complete with porous micro-fiber black reeds.",
+        image: "asset/Oud Reed Diffuser.jpg",
+        images: [
+          "asset/Oud Reed Diffuser.jpg",
+          "asset/Oud Reed Diffuser_2.jpg",
+          "asset/Oud Reed Diffuser_3.jpg",
+          "asset/Oud Reed Diffuser_4.jpg"
+        ]
+      },
+      {
+        id: "reed-diffuser-neroli",
+        title: "Neroli",
+        colorHex: "#d97706",
+        price: 849,
+        origPrice: 999,
+        burn: "60-90 Days Continuous Aroma",
+        dimensions: "150ml Glass Apothecary Bottle + 8 Reeds",
+        available: true,
+        stock: 30,
+        badge: "NEW ARRIVAL",
+        notes: {
+          top: "Pure Tunisian Neroli & Petitgrain",
+          heart: "Orange Blossom & White Lily",
+          base: "Sunlit Musk & Blonde Woods"
+        },
+        desc: "The Neroli Reed Diffuser releases an uplifting, sun-drenched floral citrus breeze distilled from pure orange blossoms and sweet petitgrain into your living spaces.",
+        image: "asset/Neroli Reed Diffuser.jpg",
+        images: [
+          "asset/Neroli Reed Diffuser.jpg",
+          "asset/Neroli Reed Diffuser_2.jpg",
+          "asset/Neroli Reed Diffuser_3.jpg",
+          "asset/Neroli Reed Diffuser_4.jpg"
+        ]
+      }
+    ]
   },
 
   // 17. TRIO AROMA DIFFUSER SET
