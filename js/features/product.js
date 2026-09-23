@@ -45,6 +45,7 @@ function openPDP(productId, variantId) {
   if (dom.pincodeMsg) dom.pincodeMsg.textContent = '';
 
   // Open modal & overlay
+  pdpModal.scrollTop = 0;
   pdpModal.classList.add('active');
   document.body.classList.add('modal-open');
   const overlay = dom.drawerOverlay || document.getElementById('drawerOverlay');
