@@ -4,6 +4,7 @@
  */
 
 import { AuthService } from '../services/authService.js';
+import { OAuthService } from '../services/oauthService.js';
 import { Session } from '../models/Session.js';
 import { User } from '../models/User.js';
 import { Address } from '../models/Address.js';
@@ -17,7 +18,7 @@ function setAuthCookie(res, token, remember = false) {
   res.cookie('candleier_auth_token', token, {
     httpOnly: true,
     secure: config.server.isProduction,
-    sameSite: 'lax',
+    sameSite: config.server.isProduction ? 'none' : 'lax',
     maxAge: maxAge,
     path: '/'
   });
@@ -27,7 +28,7 @@ function clearAuthCookie(res) {
   res.clearCookie('candleier_auth_token', {
     httpOnly: true,
     secure: config.server.isProduction,
-    sameSite: 'lax',
+    sameSite: config.server.isProduction ? 'none' : 'lax',
     path: '/'
   });
 }
@@ -40,10 +41,105 @@ export class AuthController {
     try {
       return sendSuccess(res, {
         googleClientId: config.oauth.google.clientId || null,
-        environment: config.server.nodeEnv
+        environment: config.server.env
       }, 'Auth configuration retrieved.');
     } catch (err) {
       next(err);
+    }
+  }
+
+  /**
+   * GET /api/auth/google/url
+   */
+  static async getGoogleAuthUrl(req, res, next) {
+    try {
+      const { redirectUri, state } = req.query;
+      const url = OAuthService.getGoogleAuthUrl(redirectUri, state);
+      return sendSuccess(res, { url }, 'Google authentication URL generated.');
+    } catch (err) {
+      next(err);
+    }
+  }
+
+  /**
+   * GET /api/auth/google/callback
+   */
+  static async googleCallback(req, res, next) {
+    try {
+      const { code, error, error_description } = req.query;
+
+      if (error) {
+        const errorHtml = `<!DOCTYPE html>
+<html>
+<head><title>Google Authentication</title></head>
+<body>
+  <script>
+    if (window.opener) {
+      window.opener.postMessage({ type: 'GOOGLE_AUTH_ERROR', error: ${JSON.stringify(error_description || error)} }, '*');
+      window.close();
+    } else {
+      window.location.href = '/login.html?error=' + encodeURIComponent(${JSON.stringify(error_description || error)});
+    }
+  </script>
+  <p>Authentication canceled or failed. You may close this window.</p>
+</body>
+</html>`;
+        return res.status(400).send(errorHtml);
+      }
+
+      const userAgent = req.headers['user-agent'] || '';
+      const ipAddress = req.ip || req.connection?.remoteAddress || '';
+      const protocol = req.headers['x-forwarded-proto'] || req.protocol || 'http';
+      const host = req.headers['x-forwarded-host'] || req.headers.host;
+      const defaultCallback = `${protocol}://${host}/api/auth/google/callback`;
+
+      const result = await AuthService.googleLogin({
+        code,
+        redirectUri: config.oauth.google.callbackUrl || defaultCallback,
+        userAgent,
+        ipAddress
+      });
+
+      setAuthCookie(res, result.token, true);
+
+      const successHtml = `<!DOCTYPE html>
+<html>
+<head><title>Google Authentication Success</title></head>
+<body>
+  <script>
+    if (window.opener) {
+      window.opener.postMessage({
+        type: 'GOOGLE_AUTH_SUCCESS',
+        token: ${JSON.stringify(result.token)},
+        expiresAt: ${JSON.stringify(result.expiresAt)},
+        customer: ${JSON.stringify(result.user)}
+      }, '*');
+      window.close();
+    } else {
+      window.location.href = '/account.html';
+    }
+  </script>
+  <p>Authenticated successfully. Redirecting...</p>
+</body>
+</html>`;
+      return res.send(successHtml);
+    } catch (err) {
+      const errorHtml = `<!DOCTYPE html>
+<html>
+<head><title>Google Authentication Failed</title></head>
+<body>
+  <script>
+    if (window.opener) {
+      window.opener.postMessage({ type: 'GOOGLE_AUTH_ERROR', error: ${JSON.stringify(err.message || 'Authentication failed.')} }, '*');
+      window.close();
+    } else {
+      window.location.href = '/login.html?error=' + encodeURIComponent(${JSON.stringify(err.message)});
+    }
+  </script>
+  <p>Authentication failed: ${err.message || 'Error'}. You may close this window.</p>
+</body>
+</html>`;
+      return res.status(400).send(errorHtml);
     }
   }
 
@@ -114,13 +210,15 @@ export class AuthController {
    */
   static async googleAuth(req, res, next) {
     try {
-      const { idToken, credential } = req.body;
+      const { idToken, credential, code, redirectUri } = req.body;
       const token = idToken || credential;
       const userAgent = req.headers['user-agent'] || '';
       const ipAddress = req.ip || req.connection?.remoteAddress || '';
 
       const result = await AuthService.googleLogin({
         idToken: token,
+        code,
+        redirectUri,
         userAgent,
         ipAddress
       });
