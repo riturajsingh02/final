@@ -1,6 +1,5 @@
 /* =========================================================
    8. PRODUCT QUICK VIEW MODAL (PDP) & VARIANT CONTROLLER
-   Reference UX: Baobab Collection Interactive Architecture
    ========================================================= */
 
 // State variables are defined in js/core/state.js
@@ -152,7 +151,7 @@ function renderPdpVariantState(product, variant) {
     dom.pdpDimensions.textContent = currentDimensions;
   }
 
-  // 4. Interactive Baobab-Style Variant Selector Block
+  // 4. Interactive Variant Selector Block
   const variantBlock = dom.pdpVariantBlock || document.getElementById('pdpVariantBlock');
   const variantTypeTitle = dom.pdpVariantTypeTitle || document.getElementById('pdpVariantTypeTitle');
   const variantCurrentVal = dom.pdpVariantCurrentVal || document.getElementById('pdpVariantCurrentVal');
@@ -256,7 +255,7 @@ function renderPdpVariantState(product, variant) {
 
     pdpSliderTrack.scrollTo({ left: 0, behavior: 'instant' });
     pdpSliderTrack.onscroll = () => {
-      const slideW = pdpSliderTrack.offsetWidth || 300;
+      const slideW = pdpSliderTrack.firstElementChild?.offsetWidth || pdpSliderTrack.clientWidth || pdpSliderTrack.offsetWidth || 300;
       const idx = Math.round(pdpSliderTrack.scrollLeft / slideW);
       if (idx !== currentPdpIndex && idx >= 0 && idx < images.length) {
         currentPdpIndex = idx;
@@ -333,7 +332,7 @@ function renderPdpVariantState(product, variant) {
 function setPdpSlide(idx) {
   const pdpSliderTrack = document.getElementById('pdpSliderTrack') || dom.pdpSliderTrack;
   if (!pdpSliderTrack) return;
-  const slideW = pdpSliderTrack.offsetWidth || 300;
+  const slideW = pdpSliderTrack.firstElementChild?.offsetWidth || pdpSliderTrack.clientWidth || pdpSliderTrack.offsetWidth || 300;
   pdpSliderTrack.scrollTo({ left: idx * slideW, behavior: 'smooth' });
   currentPdpIndex = idx;
   updatePdpThumbs();
@@ -345,7 +344,7 @@ function setPdpSlide(idx) {
 function scrollPdpGallery(direction) {
   const pdpSliderTrack = document.getElementById('pdpSliderTrack') || dom.pdpSliderTrack;
   if (!pdpSliderTrack) return;
-  const slideW = pdpSliderTrack.offsetWidth || 300;
+  const slideW = pdpSliderTrack.firstElementChild?.offsetWidth || pdpSliderTrack.clientWidth || pdpSliderTrack.offsetWidth || 300;
   const newIdx = Math.max(0, Math.min(currentPdpImages.length - 1, currentPdpIndex + direction));
   setPdpSlide(newIdx);
 }
