@@ -10175,3 +10175,235 @@ select {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   BAOBAB COLLECTION-INSPIRED LUXURY PDP VARIANT SYSTEM
+   ========================================================= */
+
+.pdp-variant-block {
+  margin: 0.65rem 0 1.15rem;
+  padding: 0.85rem 1rem;
+  background: #FAF6F0;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.22);
+}
+
+.pdp-variant-label-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin-bottom: 0.65rem;
+}
+
+.pdp-variant-type-title {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cabernet);
+}
+
+.pdp-variant-current-val {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--maroon-light);
+  font-family: var(--font-serif);
+}
+
+.pdp-variant-selector-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* Color Swatches (Circular Luxury Baobab Swatches) */
+.pdp-swatch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem 0.35rem 0.45rem;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(70, 11, 18, 0.15);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(43, 5, 11, 0.04);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.pdp-swatch-btn:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+}
+
+.pdp-swatch-btn.active {
+  background: #2B050B;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.35), 0 4px 12px rgba(43, 5, 11, 0.2);
+}
+
+.pdp-swatch-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.pdp-swatch-btn.active .pdp-swatch-circle {
+  border-color: var(--gold-light);
+  box-shadow: 0 0 0 1px var(--gold-primary);
+}
+
+.pdp-swatch-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.3px;
+}
+
+.pdp-swatch-btn.active .pdp-swatch-name {
+  color: var(--gold-light);
+}
+
+/* Size / Format Architectural Pills */
+.pdp-size-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(70, 11, 18, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  box-shadow: 0 2px 6px rgba(43, 5, 11, 0.04);
+}
+
+.pdp-size-pill:hover {
+  border-color: var(--gold-primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.18);
+}
+
+.pdp-size-pill.active {
+  background: #2B050B;
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3), 0 4px 12px rgba(43, 5, 11, 0.18);
+}
+
+.pdp-pill-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.pdp-size-pill.active .pdp-pill-title {
+  color: var(--gold-light);
+}
+
+.pdp-pill-price {
+  font-size: 0.74rem;
+  color: var(--maroon-light);
+  font-weight: 700;
+}
+
+.pdp-size-pill.active .pdp-pill-price {
+  color: #F5E296;
+}
+
+/* Coming Soon Badges & Buttons */
+.pdp-stock-status.coming-soon {
+  color: #B45309;
+  background: rgba(245, 158, 11, 0.12);
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  font-weight: 700;
+}
+
+.status-pulse-dot.gold {
+  background: #D97706;
+  box-shadow: 0 0 0 rgba(217, 119, 6, 0.4);
+}
+
+.btn-gold.pdp-add-bag-btn.coming-soon-btn {
+  background: #6B7280;
+  border-color: #6B7280;
+  cursor: not-allowed;
+  opacity: 0.85;
+  color: #FFFFFF;
+}
+
+.cart-variant-pill {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: rgba(212, 175, 55, 0.12);
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.swatch-soon-tag,
+.pill-soon-tag {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(217, 119, 6, 0.18);
+  color: #B45309;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+/* Out of Stock Badges & Buttons */
+.pdp-stock-status.out-of-stock {
+  color: #991B1B;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  font-weight: 700;
+}
+
+.status-pulse-dot.red {
+  background: #DC2626;
+  box-shadow: 0 0 0 rgba(220, 38, 38, 0.4);
+}
+
+.swatch-oos-tag,
+.pill-oos-tag {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(220, 38, 38, 0.12);
+  color: #991B1B;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-weight: 700;
+}
+
+.pdp-swatch-btn.out-of-stock,
+.pdp-size-pill.out-of-stock {
+  opacity: 0.8;
+  border-style: dashed;
+}
+
+.btn-secondary.pdp-add-bag-btn.out-of-stock-btn,
+.btn-gold.pdp-add-bag-btn.out-of-stock-btn {
+  background: #4B5563;
+  border-color: #4B5563;
+  cursor: not-allowed;
+  opacity: 0.8;
+  color: #FFFFFF;
+}
+
