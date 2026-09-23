@@ -1,42 +1,279 @@
 /**
- * THE CANDLEIER — AUTHENTICATION ROUTER
- * Routes for Signup, Login, OAuth, Password Reset, and Sessions.
+ * THE CANDLEIER — AUTHENTICATION SERVICE
+ * Core business logic for Registration, Login, OAuth, and Password Recovery.
  */
 
-import { Router } from 'express';
-import { AuthController } from '../controllers/authController.js';
-import { requireAuth, optionalAuth } from '../middleware/authMiddleware.js';
-import {
-  validateSignup,
-  validateLogin,
-  validateForgotPassword,
-  validateVerifyOtp,
-  validateResetPassword
-} from '../middleware/validation.js';
+import { User } from '../models/User.js';
+import { Session } from '../models/Session.js';
+import { Address } from '../models/Address.js';
+import { Order } from '../models/Order.js';
+import { PasswordResetOTP } from '../models/PasswordResetOTP.js';
+import { SMSService } from './smsService.js';
+import { OAuthService } from './oauthService.js';
+import { AppError, AuthError, ValidationError } from '../utils/errors.js';
 
-const router = Router();
+export class AuthService {
+  /**
+   * Register a new customer
+   */
+  static async register({ firstName, lastName = '', email, phone = '', password, userAgent = '', ipAddress = '' }) {
+    // 1. Check if email already registered
+    const existingByEmail = User.findByEmail(email);
+    if (existingByEmail) {
+      throw new AppError('An account with this email address already exists. Please sign in.', 409, 'EMAIL_EXISTS');
+    }
 
-// Public Authentication Endpoints
-router.get('/config', AuthController.getConfig);
-router.get('/google/url', AuthController.getGoogleAuthUrl);
-router.get('/google/callback', AuthController.googleCallback);
-router.post('/register', validateSignup, AuthController.register);
-router.post('/signup', validateSignup, AuthController.register);
-router.post('/login', validateLogin, AuthController.login);
-router.post('/google', AuthController.googleAuth);
-router.post('/forgot-password', validateForgotPassword, AuthController.forgotPassword);
-router.post('/recover', validateForgotPassword, AuthController.forgotPassword);
-router.post('/verify-otp', validateVerifyOtp, AuthController.verifyOtp);
-router.post('/reset-password', validateResetPassword, AuthController.resetPassword);
+    // 2. Check if phone already registered (if provided)
+    if (phone) {
+      const existingByPhone = User.findByPhone(phone);
+      if (existingByPhone) {
+        throw new AppError('An account with this mobile number already exists.', 409, 'PHONE_EXISTS');
+      }
+    }
 
-// Session Endpoints
-router.post('/logout', optionalAuth, AuthController.logout);
-router.get('/me', requireAuth, AuthController.getMe);
-router.get('/session', optionalAuth, (req, res) => {
-  if (req.user) {
-    return AuthController.getMe(req, res);
+    // 3. Create user in database
+    const user = await User.create({
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+      authProvider: 'local'
+    });
+
+    // 4. Create initial authenticated session
+    const { token, expiresAt, session } = await Session.create({
+      userId: user.id,
+      userAgent,
+      ipAddress,
+      remember: true
+    });
+
+    const safeUser = User.toSafeObject(user, [], []);
+
+    return {
+      user: safeUser,
+      token,
+      expiresAt,
+      session
+    };
   }
-  return res.json({ success: true, authenticated: false, customer: null });
-});
 
-export default router;
+  /**
+   * Authenticate user with Email/Phone & Password
+   */
+  static async login({ identifier, email, phone, password, remember = false, userAgent = '', ipAddress = '' }) {
+    const query = identifier || email || phone;
+    const user = User.findByEmailOrPhone(query);
+
+    if (!user) {
+      throw new AppError('Invalid credentials. No account found with these details.', 401, 'INVALID_CREDENTIALS');
+    }
+
+    // Check account lockout
+    if (User.isLocked(user)) {
+      const lockExpiry = new Date(user.lockoutUntil);
+      const remainingMinutes = Math.ceil((lockExpiry - new Date()) / (60 * 1000));
+      throw new AppError(
+        `Account temporarily locked due to multiple failed login attempts. Please try again in ${remainingMinutes} minute(s) or reset your password.`,
+        423,
+        'ACCOUNT_LOCKED'
+      );
+    }
+
+    // Verify password
+    const isMatch = await User.verifyPassword(user, password);
+    if (!isMatch) {
+      await User.recordFailedAttempt(user);
+      throw new AppError('Invalid email or password. Please verify your credentials.', 401, 'INVALID_CREDENTIALS');
+    }
+
+    // Successful login - reset attempts & record timestamp
+    await User.recordSuccessfulLogin(user);
+
+    // Create session
+    const { token, expiresAt, session } = await Session.create({
+      userId: user.id,
+      userAgent,
+      ipAddress,
+      remember
+    });
+
+    const addresses = Address.getByUserId(user.id);
+    const orders = Order.getByUserId(user.id);
+    const safeUser = User.toSafeObject(user, addresses, orders);
+
+    return {
+      user: safeUser,
+      token,
+      expiresAt,
+      session
+    };
+  }
+
+  /**
+   * Authenticate via Google OAuth (ID token or Authorization code)
+   */
+  static async googleLogin({ idToken, code, redirectUri, userAgent = '', ipAddress = '' }) {
+    let googleProfile;
+    if (code) {
+      googleProfile = await OAuthService.exchangeAuthorizationCode(code, redirectUri);
+    } else if (idToken) {
+      googleProfile = await OAuthService.verifyGoogleIdToken(idToken);
+    } else {
+      throw new AuthError('Either a Google ID token or authorization code must be provided.');
+    }
+
+    if (!googleProfile || !googleProfile.email) {
+      throw new AuthError('Invalid Google profile data.');
+    }
+
+    // 1. Check if user exists by Google ID
+    let user = User.findByGoogleId(googleProfile.googleId);
+
+    // 2. If not found by Google ID, check by Email (for account linking)
+    if (!user && googleProfile.email) {
+      user = User.findByEmail(googleProfile.email);
+      if (user) {
+        // Link Google ID to existing account
+        await User.linkGoogleAccount(user.id, googleProfile.googleId, googleProfile.emailVerified);
+        user = User.findById(user.id);
+      }
+    }
+
+    // 3. If user still does not exist, create a new user
+    if (!user) {
+      user = await User.create({
+        firstName: googleProfile.firstName || 'Client',
+        lastName: googleProfile.lastName || '',
+        email: googleProfile.email,
+        googleId: googleProfile.googleId,
+        authProvider: 'google',
+        isEmailVerified: Boolean(googleProfile.emailVerified)
+      });
+    } else {
+      // Record successful login
+      await User.recordSuccessfulLogin(user);
+    }
+
+    // 4. Create authenticated session
+    const { token, expiresAt, session } = await Session.create({
+      userId: user.id,
+      userAgent,
+      ipAddress,
+      remember: true
+    });
+
+    const addresses = Address.getByUserId(user.id);
+    const orders = Order.getByUserId(user.id);
+    const safeUser = User.toSafeObject(user, addresses, orders);
+
+    return {
+      user: safeUser,
+      token,
+      expiresAt,
+      session
+    };
+  }
+
+  /**
+   * Request OTP for password reset
+   */
+  static async requestPasswordReset({ identifier }) {
+    const user = User.findByEmailOrPhone(identifier);
+    if (!user) {
+      // For security, do not expose whether user exists, but give friendly confirmation
+      return {
+        success: true,
+        message: 'If an account exists with these details, a verification code has been dispatched.'
+      };
+    }
+
+    // Check rate limit
+    const rateCheck = PasswordResetOTP.checkRateLimit(user.id);
+    if (!rateCheck.allowed) {
+      throw new AppError(rateCheck.message, 429, 'RATE_LIMIT_EXCEEDED');
+    }
+
+    const deliveryTarget = user.phone || user.email;
+    const deliveryType = user.phone ? 'sms' : 'email';
+
+    const { rawOtp } = await PasswordResetOTP.createForUser(user.id, deliveryTarget, deliveryType);
+
+    if (user.phone) {
+      await SMSService.sendOtp({ phone: user.phone, otp: rawOtp });
+    } else {
+      console.log(`[Email-Service Mock] Password reset code dispatched to ${user.email.slice(0, 3)}****@***`);
+    }
+
+    const maskedTarget = user.phone
+      ? `${user.phone.slice(0, 3)}******${user.phone.slice(-3)}`
+      : `${user.email.slice(0, 3)}***@${user.email.split('@')[1]}`;
+
+    return {
+      success: true,
+      userId: user.id,
+      maskedTarget,
+      deliveryType,
+      message: `Verification code sent to ${maskedTarget}.`
+    };
+  }
+
+  /**
+   * Verify OTP code and issue a short-lived reset token
+   */
+  static async verifyOtp({ userId, identifier, otp }) {
+    let targetUserId = userId;
+    if (!targetUserId && identifier) {
+      const user = User.findByEmailOrPhone(identifier);
+      if (user) targetUserId = user.id;
+    }
+
+    if (!targetUserId) {
+      throw new ValidationError('Invalid user or verification session.');
+    }
+
+    const result = await PasswordResetOTP.verifyCode(targetUserId, otp);
+    if (!result.success) {
+      throw new AppError(result.message, 400, 'INVALID_OTP');
+    }
+
+    return {
+      success: true,
+      userId: targetUserId,
+      resetToken: result.resetToken,
+      message: 'Verification successful. You may now enter your new password.'
+    };
+  }
+
+  /**
+   * Complete password reset with verified token
+   */
+  static async resetPassword({ userId, resetToken, newPassword }) {
+    const user = User.findById(userId);
+    if (!user) {
+      throw new AppError('User not found.', 404, 'USER_NOT_FOUND');
+    }
+
+    const isTokenValid = await PasswordResetOTP.verifyResetToken(user, resetToken);
+    if (!isTokenValid) {
+      throw new AppError('Invalid or expired password reset token. Please request a new code.', 400, 'INVALID_RESET_TOKEN');
+    }
+
+    // Update password in DB
+    await User.updatePassword(userId, newPassword);
+
+    // Invalidate reset token
+    await PasswordResetOTP.clearResetToken(userId);
+
+    // Revoke all active sessions for security
+    await Session.revokeAllForUser(userId);
+
+    return {
+      success: true,
+      message: 'Your password has been successfully updated. Please sign in with your new credentials.'
+    };
+  }
+}
+
+export default AuthService;
