@@ -201,110 +201,357 @@
       <aside class="policy-toc-sidebar">
         <h3 class="policy-toc-title">Categories</h3>
         <ul class="policy-toc-list">
-          <li><a href="#candle-care">1. Candle Care &amp; Burn Guide</a></li>
-          <li><a href="#shipping-faq">2. Shipping &amp; Delivery</a></li>
-          <li><a href="#returns-faq">3. Returns &amp; Transit Damage</a></li>
-          <li><a href="#ingredients-faq">4. Ingredients &amp; Wax Quality</a></li>
-          <li><a href="#gifting-faq">5. Bespoke Gifting &amp; Bulk Orders</a></li>
+          <li><a href="#orders-account">1. Ordering &amp; Account</a></li>
+          <li><a href="#shipping-delivery">2. Shipping, Delivery &amp; Tracking</a></li>
+          <li><a href="#payment-pricing">3. Payment Methods &amp; COD</a></li>
+          <li><a href="#returns-replacements">4. Returns, Replacements &amp; Refunds</a></li>
+          <li><a href="#candle-care">5. Candle Care &amp; Burn Rituals</a></li>
+          <li><a href="#diffusers-aromas">6. Reed Diffusers &amp; Home Aromas</a></li>
+          <li><a href="#ingredients-wax">7. Ingredients, Wax &amp; Safety</a></li>
+          <li><a href="#gifting-bulk">8. Bespoke Gifting &amp; Bulk Orders</a></li>
+          <li><a href="#support-contact">9. Concierge &amp; Customer Support</a></li>
         </ul>
+
+        <div style="margin-top: 1.8rem; padding: 1.1rem; background: #FAF6F0; border-radius: 8px; border: 1px solid rgba(43, 5, 11, 0.08);">
+          <div style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--maroon-light); margin-bottom: 0.4rem;">Direct Assistance</div>
+          <p style="font-size: 0.78rem; color: var(--text-dark); margin: 0 0 0.8rem; line-height: 1.4;">Need prompt support with your fragrance order?</p>
+          <a href="https://wa.me/919762831995" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: #25D366; color: #FFFFFF; font-size: 0.76rem; font-weight: 600; padding: 0.5rem 0.8rem; border-radius: 6px; text-decoration: none;">
+            <span>WhatsApp Concierge</span>
+            <span>↗</span>
+          </a>
+        </div>
       </aside>
 
       <div class="policy-main-content">
-        <!-- 1. Candle Care -->
-        <article class="policy-block" id="candle-care">
-          <h2 class="policy-block-heading"><span class="num">1</span> Candle Care &amp; Burn Guide</h2>
+        <!-- Quick Search Filter Box -->
+        <div style="background: #FFFFFF; border: 1px solid rgba(43, 5, 11, 0.1); border-radius: 10px; padding: 1.2rem 1.5rem; box-shadow: 0 3px 12px rgba(43, 5, 11, 0.03);">
+          <label for="faqSearchInput" style="display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.2px; color: var(--cabernet-dark); margin-bottom: 0.5rem;">
+            🔍 Search Questions &amp; Answers
+          </label>
+          <div style="position: relative;">
+            <input type="text" id="faqSearchInput" placeholder="Type a keyword (e.g. tracking, COD, return, tunneling, gift box, soy wax)..." 
+              style="width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(43, 5, 11, 0.15); border-radius: 6px; font-size: 0.88rem; outline: none; background: #FAF6F0; color: var(--text-dark); box-sizing: border-box;"
+              oninput="filterFaqQuestions(this.value)" />
+          </div>
+          <div id="faqSearchResultMsg" style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem; display: none;"></div>
+        </div>
 
-          <div style="margin-bottom: 1.5rem;">
+        <!-- 1. Ordering & Account Management -->
+        <article class="policy-block faq-group" id="orders-account">
+          <h2 class="policy-block-heading"><span class="num">1</span> Ordering &amp; Account Management</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Do I need to create an account to place an order?</h4>
+            <p class="policy-text">
+              No, you can complete your purchase smoothly via <strong>Guest Checkout</strong>. However, creating a complimentary Candleier account is highly recommended as it enables you to track live parcel movements, view past order invoices, save multiple delivery addresses, and enjoy faster one-click checkout.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How do I create and manage my account?</h4>
+            <p class="policy-text">
+              Click the <strong>Sign In</strong> icon in the header navigation or visit <a href="login.html" style="color: var(--maroon-light); text-decoration: underline; font-weight: 500;">Client Login</a>. Enter your registered email address or mobile number to receive a secure login link or OTP. Once signed in, you can manage saved addresses, profile information, and review your order archive.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How do I know my order is confirmed?</h4>
+            <p class="policy-text">
+              Upon successful placement, an on-screen confirmation with your unique <strong>Order ID</strong> (e.g. #CND-1082) will appear. You will simultaneously receive an automated confirmation via <strong>SMS, WhatsApp, and Email</strong> with full itemized details and invoice download links.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Can I change my delivery address or phone number after placing an order?</h4>
+            <p class="policy-text">
+              Yes, provided your order has not yet been handed over to our courier partner (typically within <strong>12 to 24 hours</strong> of placement). Please message our concierge on WhatsApp at <strong>+91 9762831995</strong> or email <strong>support@thecandleier.com</strong> with your Order ID and updated address immediately.
+            </p>
+          </div>
+
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Can I add or remove items from an existing order?</h4>
+            <p class="policy-text">
+              Once an order is confirmed, line items cannot be modified directly due to automated GST billing. However, if the order is not yet dispatched, our customer care team can cancel your existing order so you may place an amended order with your desired selections.
+            </p>
+          </div>
+        </article>
+
+        <!-- 2. Shipping, Delivery & Tracking -->
+        <article class="policy-block faq-group" id="shipping-delivery">
+          <h2 class="policy-block-heading"><span class="num">2</span> Shipping, Delivery &amp; Transit Tracking</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What are the shipping charges?</h4>
+            <p class="policy-text">
+              We offer <strong>FREE Express Pan-India Shipping</strong> on all orders of <strong>₹999 and above</strong>. For orders below ₹999, a nominal flat shipping fee of <strong>₹99</strong> is applied at checkout to cover insured courier transit.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What is the estimated delivery timeframe across India?</h4>
+            <p class="policy-text">
+              Orders are handcrafted and dispatched within <strong>24 to 48 hours</strong>.
+            </p>
+            <ul class="policy-list">
+              <li><strong>Tier 1 / Metro Cities</strong> (Mumbai, Delhi NCR, Bengaluru, Hyderabad, Chennai, Kolkata, Pune): <strong>3 to 5 business days</strong>.</li>
+              <li><strong>Rest of India / Tier 2 &amp; Tier 3 Cities</strong>: <strong>5 to 7 business days</strong>.</li>
+              <li><strong>Special / Remote Locations</strong> (Northeast, J&amp;K, Andaman): <strong>7 to 9 business days</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How do I track my order once dispatched?</h4>
+            <p class="policy-text">
+              Once handed over to the courier, you will receive an SMS and WhatsApp notification containing your <strong>Airway Bill (AWB) number</strong> and direct tracking link. You can also track your shipment anytime on our <a href="tracking.html" style="color: var(--maroon-light); text-decoration: underline; font-weight: 500;">Live Tracking Portal</a> by entering your Order ID or phone number.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Which courier logistics partners do you use?</h4>
+            <p class="policy-text">
+              We partner with India's premier express logistics networks, including <strong>Blue Dart, Delhivery, DTDC, and Xpressbees</strong>. Every fragile glass vessel is nestled inside custom shock-absorbent honeycomb cushions and sealed with tamper-evident security tape.
+            </p>
+          </div>
+
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What happens if I am not available during delivery?</h4>
+            <p class="policy-text">
+              Our courier partners attempt delivery up to <strong>3 times</strong> on consecutive business days. You will also receive an advance delivery coordination call or OTP verification. If all attempts fail, the package returns to our warehouse, and our concierge team will reach out to reschedule.
+            </p>
+          </div>
+        </article>
+
+        <!-- 3. Payment Methods, COD & Pricing -->
+        <article class="policy-block faq-group" id="payment-pricing">
+          <h2 class="policy-block-heading"><span class="num">3</span> Payment Methods, COD &amp; Pricing</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What payment methods do you accept?</h4>
+            <p class="policy-text">
+              We support a wide array of fast and secure payment options:
+            </p>
+            <ul class="policy-list">
+              <li><strong>UPI</strong> (Google Pay, PhonePe, Paytm, BHIM, Cred, and all UPI apps)</li>
+              <li><strong>Credit &amp; Debit Cards</strong> (Visa, Mastercard, RuPay, American Express, Maestro)</li>
+              <li><strong>Net Banking</strong> (50+ leading Indian banks)</li>
+              <li><strong>Cash on Delivery (COD)</strong> across all serviceable PIN codes</li>
+            </ul>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How does Cash on Delivery (COD) work?</h4>
+            <p class="policy-text">
+              COD is available for cart totals up to <strong>₹5,000</strong> across verified PIN codes. A nominal courier collection fee of <strong>₹49</strong> is added to cover reverse cash logistics. For security, orders exceeding ₹5,000 require prepaid payment via UPI or Cards.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Is my online transaction and card data secure?</h4>
+            <p class="policy-text">
+              Yes, 100%. All online payments are handled via Razorpay with <strong>256-bit bank-grade SSL encryption</strong> complying with PCI-DSS Level 1 standards. The Candleier never views, processes, or stores your banking credentials or UPI PIN.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Are prices inclusive of GST?</h4>
+            <p class="policy-text">
+              Yes, all prices listed across the store are <strong>all-inclusive of 18% Goods &amp; Services Tax (GST)</strong>. What you see is exactly what you pay, with zero unexpected charges at final payment.
+            </p>
+          </div>
+
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How do I apply coupon discount codes?</h4>
+            <p class="policy-text">
+              On the checkout screen, click the 'Discount Codes' section or enter codes such as <strong>SAVE5</strong> (5% off on first order) or <strong>BUY2</strong> (10% off on 2+ items) into the promo box and click 'Apply'. Prepaid orders automatically receive an extra 5% discount.
+            </p>
+          </div>
+        </article>
+
+        <!-- 4. Cancellations, Returns, Replacements & Refunds -->
+        <article class="policy-block faq-group" id="returns-replacements">
+          <h2 class="policy-block-heading"><span class="num">4</span> Cancellations, Returns &amp; Refunds</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Can I cancel my order?</h4>
+            <p class="policy-text">
+              You can cancel your order at <strong>zero cancellation fee</strong> anytime before it is dispatched from our workshop (within 12 to 24 hours of placement). Once dispatched, the shipment is in transit and cannot be recalled, but can be managed under our transit protection policy.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What is your policy if my glass vessel arrives broken or damaged in transit?</h4>
+            <p class="policy-text">
+              We assume <strong>100% responsibility</strong> for safe arrival. In the rare event of transit breakage or leaking diffusers:
+            </p>
+            <ul class="policy-list">
+              <li>Take clear photos or a short unboxing video showing the damaged vessel and the shipping label on the box.</li>
+              <li>Share the photos with us on WhatsApp (<strong>+91 9762831995</strong>) or email (<strong>support@thecandleier.com</strong>) within <strong>48 hours of delivery</strong>.</li>
+              <li>We will immediately arrange a <strong>free express replacement</strong> dispatch or process a <strong>100% full refund</strong>.</li>
+            </ul>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Can I return a candle after lighting or burning it?</h4>
+            <p class="policy-text">
+              No. In accordance with strict luxury hygiene, fragrance purity, and safety regulations, candles or diffusers that have been opened, lit, or partially consumed cannot be returned or restocked.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How long does it take to receive a refund?</h4>
+            <p class="policy-text">
+              Approved refunds are initiated within <strong>24 to 48 hours</strong>. Prepaid card/NetBanking/UPI refunds reflect back in your account in <strong>2 to 5 business days</strong>. For COD orders, our team will request your bank account or UPI ID to transfer the refund directly.
+            </p>
+          </div>
+
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Are sale and clearance items returnable?</h4>
+            <p class="policy-text">
+              Products purchased during clearance flash sales or marked as "Final Sale" are non-returnable and non-exchangeable, unless received damaged during transit.
+            </p>
+          </div>
+        </article>
+
+        <!-- 5. Candle Care, Burn Rituals & Wax Quality -->
+        <article class="policy-block faq-group" id="candle-care">
+          <h2 class="policy-block-heading"><span class="num">5</span> Candle Care &amp; Burn Rituals</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
             <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What is the "Memory Burn" and why is it crucial?</h4>
             <p class="policy-text">
               On your candle's very first lighting, allow it to burn continuously for <strong>2 to 3 hours</strong> until the liquid wax pool reaches the outer glass rim. Soy wax has memory: if extinguished too soon, it will tunnel down the center, drastically shortening candle life.
             </p>
           </div>
 
-          <div style="margin-bottom: 1.5rem;">
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
             <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Why should I trim the cotton wick before lighting?</h4>
             <p class="policy-text">
               Always trim the cotton wick to <strong>1/4 inch (6mm)</strong> prior to every burn. A trimmed wick ensures an even flame, eliminates excess carbon mushrooming, and prevents black soot from adhering to the glass vessel.
             </p>
           </div>
 
-          <div>
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
             <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How long should I burn the candle in a single session?</h4>
             <p class="policy-text">
               We recommend burning your candle for a maximum of <strong>3 to 4 hours</strong> at a time. Burning beyond 4 hours can cause the vessel to overheat and consume fragrance oils too rapidly.
             </p>
           </div>
-        </article>
 
-        <!-- 2. Shipping FAQ -->
-        <article class="policy-block" id="shipping-faq">
-          <h2 class="policy-block-heading"><span class="num">2</span> Shipping &amp; Delivery</h2>
-
-          <div style="margin-bottom: 1.5rem;">
-            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How long does delivery take?</h4>
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How do I fix a candle that has already started tunneling?</h4>
             <p class="policy-text">
-              We dispatch orders within 24–48 hours. Metro cities (Mumbai, Delhi NCR, Bangalore, Hyderabad, Chennai) receive delivery within <strong>3 to 5 business days</strong>. Rest of India typically arrives within <strong>5 to 7 business days</strong>.
+              Wrap aluminum foil around the top rim of the candle like a dome, leaving a 1-inch opening at the center above the flame. Burn for 1–2 hours. The trapped heat will melt the hardened wax rim back into a uniform flat pool.
             </p>
           </div>
 
-          <div>
-            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Is Cash on Delivery (COD) available?</h4>
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How do I clean and repurpose the jar after the wax finishes?</h4>
             <p class="policy-text">
-              Yes, we offer Cash on Delivery across verified postal PIN codes for orders up to <strong>₹5,000</strong> with a standard ₹49 courier handling fee. Orders above ₹5,000 require secure prepaid checkout.
+              When approximately 1/2 inch of wax remains, discontinue burning. Pour hot (not boiling) tap water into the jar; the leftover soy wax will soften and float to the surface. Once cooled, pop the wax puck out, clean with warm soapy water, and repurpose the jar as a luxe makeup brush holder, pen stand, or succulent planter.
             </p>
           </div>
         </article>
 
-        <!-- 3. Returns FAQ -->
-        <article class="policy-block" id="returns-faq">
-          <h2 class="policy-block-heading"><span class="num">3</span> Returns &amp; Transit Damage</h2>
+        <!-- 6. Reed Diffusers & Home Aromas -->
+        <article class="policy-block faq-group" id="diffusers-aromas">
+          <h2 class="policy-block-heading"><span class="num">6</span> Reed Diffusers &amp; Flame-Free Aromas</h2>
 
-          <div style="margin-bottom: 1.5rem;">
-            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What if my candle vessel arrives broken in transit?</h4>
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How do I set up and maintain a Reed Diffuser?</h4>
             <p class="policy-text">
-              We take full responsibility for transit damages. Simply capture photographs of the broken item and shipping label, and share them via WhatsApp (+91 9762831995) or email within <strong>3 days of delivery</strong>. We will rush an expedited replacement or process a 100% full refund immediately.
+              Carefully unseal the glass diffuser bottle and insert the natural fiber reed sticks into the scented oil. Allow the reeds to absorb oil for 2–3 hours, then flip the sticks to jumpstart aroma dispersion. For a burst of refreshed scent throw, flip the reeds once a week.
             </p>
           </div>
 
-          <div>
-            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Can I return a candle after lighting it?</h4>
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How long do your Reed Diffusers last?</h4>
             <p class="policy-text">
-              No. In accordance with safety, hygiene, and luxury fragrance protocols, products that have been lit, burned, or used cannot be returned or refunded.
-            </p>
-          </div>
-        </article>
-
-        <!-- 4. Ingredients -->
-        <article class="policy-block" id="ingredients-faq">
-          <h2 class="policy-block-heading"><span class="num">4</span> Ingredients &amp; Wax Quality</h2>
-
-          <div style="margin-bottom: 1.5rem;">
-            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What wax do you use in your candles?</h4>
-            <p class="policy-text">
-              We use <strong>100% pure botanical soy wax</strong> sourced from renewable oil crops. We never use petroleum paraffin, synthetic hardeners, or chemical bleaching agents.
+              Our 100ml luxury reed diffusers provide uninterrupted, flame-free botanical aroma for <strong>60 to 90 days</strong>. Lifespan may vary based on air conditioning, ceiling fan proximity, and room temperature.
             </p>
           </div>
 
-          <div>
-            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Are your fragrances safe for pets and children?</h4>
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Where is the optimal location to place diffusers and candles?</h4>
             <p class="policy-text">
-              Yes. All our fine aromatic notes adhere to strict International Fragrance Association (IFRA) safety standards and are 100% free of phthalates, parabens, and hazardous VOCs.
+              Place diffusers in high-traffic transition areas such as foyers, hallways, vanity counters, powder rooms, and bedroom dressers. Keep them away from direct sunlight, air conditioner vents, and drafty windows to prevent rapid oil evaporation.
             </p>
           </div>
         </article>
 
-        <!-- 5. Gifting -->
-        <article class="policy-block" id="gifting-faq">
-          <h2 class="policy-block-heading"><span class="num">5</span> Bespoke Gifting &amp; Bulk Orders</h2>
-          <p class="policy-text">
-            We curate bespoke botanical gift hampers for luxury weddings, brand launches, Diwali celebrations, and corporate client gifting. Connect with our gifting atelier at <strong>support@thecandleier.com</strong> or WhatsApp <strong>+91 9762831995</strong>.
-          </p>
+        <!-- 7. Ingredients, Wax & Safety -->
+        <article class="policy-block faq-group" id="ingredients-wax">
+          <h2 class="policy-block-heading"><span class="num">7</span> Ingredients, Wax &amp; Safety Standards</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">What wax is used in The Candleier candles?</h4>
+            <p class="policy-text">
+              We exclusively use <strong>100% natural botanical soy wax</strong> blended with organic beeswax. We never use petroleum-derived paraffin, synthetic stearic acid, or chemical bleaching agents.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Are your candles and oils safe for pets and children?</h4>
+            <p class="policy-text">
+              Yes. All our aromatic formulations strictly conform to <strong>IFRA (International Fragrance Association)</strong> global standards and are 100% free of phthalates, parabens, and hazardous VOCs. For fire safety, always burn candles on a stable heat-proof surface out of reach of unattended pets and children.
+            </p>
+          </div>
+
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Why do soy candles sometimes develop "frosting" or white crystals on top?</h4>
+            <p class="policy-text">
+              "Frosting" is a natural polymorphic crystal formation unique to 100% pure soy wax. It is an authentic hallmark of all-natural vegetable wax containing zero paraffin additives. It does not affect fragrance diffusion or burn performance in any way.
+            </p>
+          </div>
+        </article>
+
+        <!-- 8. Bespoke Gifting & Bulk Orders -->
+        <article class="policy-block faq-group" id="gifting-bulk">
+          <h2 class="policy-block-heading"><span class="num">8</span> Bespoke Gifting &amp; Bulk Orders</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Can I send an order as a gift with a personalised message?</h4>
+            <p class="policy-text">
+              Yes! We offer complimentary <strong>handwritten gift calligraphy cards</strong> and luxury ribbon gift packaging. Simply add your custom note during checkout or message our WhatsApp concierge with your Order ID.
+            </p>
+          </div>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Do you accept bulk orders for weddings, corporate gifting, and festivals?</h4>
+            <p class="policy-text">
+              Yes, we curate exquisite bespoke hampers and luxury favors for luxury weddings, corporate holiday celebrations, Diwali gifts, and private VIP gatherings. Special wholesale tier pricing is available for orders of <strong>25 units and above</strong>.
+            </p>
+          </div>
+
+          <div class="faq-entry">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">Can we customize vessel branding or private label scents?</h4>
+            <p class="policy-text">
+              Yes! For orders of 50+ units, our master perfumer offers custom fragrance pairing, custom gold-embossed vessel labels, and bespoke luxury packaging. Inquire at <strong>support@thecandleier.com</strong> or WhatsApp <strong>+91 9762831995</strong>.
+            </p>
+          </div>
+        </article>
+
+        <!-- 9. Concierge & Customer Support -->
+        <article class="policy-block faq-group" id="support-contact">
+          <h2 class="policy-block-heading"><span class="num">9</span> Concierge &amp; Customer Support</h2>
+
+          <div class="faq-entry" style="margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1rem; color: var(--cabernet-dark); margin: 0 0 0.4rem; font-weight: 600;">How can I reach The Candleier Concierge Team?</h4>
+            <p class="policy-text">
+              Our dedicated client support specialists are available Monday through Saturday:
+            </p>
+            <ul class="policy-list">
+              <li><strong>WhatsApp Concierge:</strong> <a href="https://wa.me/919762831995" target="_blank" rel="noopener" style="color: var(--maroon-light); font-weight: 600;">+91 9762831995</a> (Fastest response within 30 minutes)</li>
+              <li><strong>Email Support:</strong> <a href="mailto:support@thecandleier.com" style="color: var(--maroon-light); font-weight: 600;">support@thecandleier.com</a></li>
+              <li><strong>Phone Hotline:</strong> +91 9762831995</li>
+              <li><strong>Working Hours:</strong> Monday – Saturday, 09:30 AM – 06:30 PM IST</li>
+            </ul>
+          </div>
         </article>
 
         <div class="policy-contact-box">
           <div>
             <h4>Still Have Unanswered Questions?</h4>
-            <p>Our client concierge is happy to assist you personally.</p>
+            <p>Our client concierge is happy to assist you with fragrance recommendations or order inquiries.</p>
           </div>
           <div class="policy-contact-actions">
             <a href="https://wa.me/919762831995" target="_blank" class="policy-contact-btn">Chat on WhatsApp</a>
@@ -550,5 +797,48 @@
   <script src="js/core/data.js"></script>
   <script src="js/shopify.js"></script>
   <script src="js/core/nav.js"></script>
+  <script>
+    function filterFaqQuestions(query) {
+      const q = (query || '').trim().toLowerCase();
+      const entries = document.querySelectorAll('.faq-entry');
+      const groups = document.querySelectorAll('.faq-group');
+      const msg = document.getElementById('faqSearchResultMsg');
+      let matchCount = 0;
+
+      if (!q) {
+        entries.forEach(el => el.style.display = '');
+        groups.forEach(g => g.style.display = '');
+        if (msg) msg.style.display = 'none';
+        return;
+      }
+
+      entries.forEach(el => {
+        const text = el.textContent.toLowerCase();
+        if (text.includes(q)) {
+          el.style.display = '';
+          matchCount++;
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      // Hide empty groups
+      groups.forEach(g => {
+        const visibleEntries = g.querySelectorAll('.faq-entry:not([style*="display: none"])');
+        if (visibleEntries.length === 0) {
+          g.style.display = 'none';
+        } else {
+          g.style.display = '';
+        }
+      });
+
+      if (msg) {
+        msg.style.display = 'block';
+        msg.textContent = matchCount > 0 
+          ? `Found ${matchCount} matching question${matchCount > 1 ? 's' : ''}` 
+          : 'No questions matched your search term. Feel free to contact our WhatsApp Concierge directly!';
+      }
+    }
+  </script>
 </body>
 </html>
