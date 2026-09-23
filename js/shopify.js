@@ -305,24 +305,45 @@
     },
 
     // 4. Google OAuth Sign-In
-    async googleLogin(idToken) {
-      if (!idToken) throw new Error('Google authentication token missing.');
+    async googleLogin(payload) {
+      if (!payload) throw new Error('Google authentication payload missing.');
+      const body = typeof payload === 'string' ? { idToken: payload } : payload;
 
       const response = await fetch('/api/auth/google', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
-        body: JSON.stringify({ idToken })
+        body: JSON.stringify(body)
       });
 
       const data = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error(data.message || 'Google sign-in failed. Please try again.');
+        throw new Error(data.message || data.error || 'Google sign-in failed. Please try again.');
       }
 
       const tokenVal = data.accessToken || data.token;
       if (tokenVal) {
         this.setSession(tokenVal, data.expiresAt, true);
+      }
+
+      const rawUser = data.user || data.customer;
+      if (rawUser) {
+        const formatted = {
+          id: rawUser.id,
+          firstName: rawUser.firstName || (rawUser.name ? rawUser.name.split(' ')[0] : ''),
+          lastName: rawUser.lastName || (rawUser.name ? rawUser.name.split(' ').slice(1).join(' ') : ''),
+          displayName: rawUser.displayName || rawUser.name || `${rawUser.firstName || ''} ${rawUser.lastName || ''}`.trim() || 'Client',
+          email: rawUser.email,
+          phone: rawUser.phone || '',
+          createdAt: rawUser.createdAt,
+          tier: rawUser.tier || 'Sanctuary Connoisseur',
+          defaultAddress: null,
+          addresses: [],
+          orders: []
+        };
+        localStorage.setItem(CUST_CACHE_KEY, JSON.stringify(formatted));
+        sessionStorage.setItem(CUST_CACHE_KEY, JSON.stringify(formatted));
+        return formatted;
       }
 
       return await this.getCustomer(true);
