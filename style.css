@@ -6059,6 +6059,66 @@ select {
   margin-bottom: 1.2rem;
 }
 
+/* Center alignment on desktop for New Arrivals & View All Catalog */
+@media (min-width: 769px) {
+  .km-arrivals-section .km-header-top-row,
+  .km-arrivals-header-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .km-arrivals-section .km-arrivals-header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .km-arrivals-section .km-section-subtitle {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .km-arrivals-section .km-view-all-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.2rem;
+  }
+
+  .km-arrivals-section .km-filter-pills-bar {
+    justify-content: center;
+  }
+}
+
+.km-view-all-wrap {
+  display: inline-flex;
+  align-items: center;
+}
+
+.km-arrivals-bottom-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 2.4rem;
+  text-align: center;
+}
+
+.km-view-all-pill-main {
+  padding: 0.75rem 2rem;
+  font-size: 0.82rem;
+  letter-spacing: 1.2px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(43, 5, 11, 0.08);
+}
+
 .km-header-badge {
   display: inline-flex;
   align-items: center;
