@@ -3087,10 +3087,12 @@ body.drawer-open {
   }
 
   .pdp-main-slider-wrap {
-    min-height: unset;
-    aspect-ratio: 1.15 / 1;
-    max-height: 320px;
-    border-radius: 10px;
+    min-height: 380px;
+    height: 400px;
+    max-height: 50vh;
+    max-height: 50dvh;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
   }
 
   .pdp-gallery-arrow {
@@ -3219,8 +3221,12 @@ body.drawer-open {
   }
 
   .pdp-main-slider-wrap {
-    aspect-ratio: 1.2 / 1;
-    max-height: 250px;
+    aspect-ratio: 1 / 1;
+    min-height: 330px;
+    height: 350px;
+    max-height: 48vh;
+    max-height: 48dvh;
+    border-radius: 10px;
   }
 
   .pdp-title {
@@ -3254,7 +3260,10 @@ body.drawer-open {
 
 @media (max-width: 360px) {
   .pdp-main-slider-wrap {
-    max-height: 210px;
+    min-height: 290px;
+    height: 300px;
+    max-height: 45vh;
+    max-height: 45dvh;
   }
 
   .pdp-title {
