@@ -18,6 +18,8 @@ const router = Router();
 
 // Public Authentication Endpoints
 router.get('/config', AuthController.getConfig);
+router.get('/google/url', AuthController.getGoogleAuthUrl);
+router.get('/google/callback', AuthController.googleCallback);
 router.post('/register', validateSignup, AuthController.register);
 router.post('/signup', validateSignup, AuthController.register);
 router.post('/login', validateLogin, AuthController.login);
