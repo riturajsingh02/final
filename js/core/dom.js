@@ -44,15 +44,14 @@ const dom = {
   closeMobileNavBtn: document.getElementById('closeMobileNavBtn'),
   mobileDrawer: document.getElementById('mobileDrawer'),
   
-  // PDP Modal
+  // PDP Quick View Modal (Baobab Luxury System)
   pdpModal: document.getElementById('pdpModal'),
   closePdpBtn: document.getElementById('closePdpBtn'),
   pdpImage: document.getElementById('pdpImage'),
-  pdpGalleryTrack: document.getElementById('pdpGalleryTrack'),
-  pdpGalleryPrev: document.getElementById('pdpGalleryPrev'),
-  pdpGalleryNext: document.getElementById('pdpGalleryNext'),
-  pdpThumbsContainer: document.getElementById('pdpThumbsContainer'),
+  pdpSliderTrack: document.getElementById('pdpSliderTrack'),
+  pdpThumbsRow: document.getElementById('pdpThumbsRow'),
   pdpCategory: document.getElementById('pdpCategory'),
+  pdpStockBadge: document.getElementById('pdpStockBadge'),
   pdpTitle: document.getElementById('pdpTitle'),
   pdpPrice: document.getElementById('pdpPrice'),
   pdpOrigPrice: document.getElementById('pdpOrigPrice'),
@@ -65,6 +64,12 @@ const dom = {
   pincodeInput: document.getElementById('pincodeInput'),
   checkPincodeBtn: document.getElementById('checkPincodeBtn'),
   pincodeMsg: document.getElementById('pincodeMsg'),
+  
+  // Variant Selector Elements
+  pdpVariantBlock: document.getElementById('pdpVariantBlock'),
+  pdpVariantTypeTitle: document.getElementById('pdpVariantTypeTitle'),
+  pdpVariantCurrentVal: document.getElementById('pdpVariantCurrentVal'),
+  pdpVariantSelectorGrid: document.getElementById('pdpVariantSelectorGrid'),
   pdpVariantWrap: document.getElementById('pdpVariantWrap'),
   pdpVariantSelect: document.getElementById('pdpVariantSelect'),
   pdpBurnDetail: document.getElementById('pdpBurnDetail'),
