@@ -153,7 +153,7 @@ const CANDLE_INVENTORY = [
     ]
   },
 
-  // 2. RIBBED GLOW PILLAR (Variants: White & Red in stock; Amber & Black Out of Stock)
+  // 2. RIBBED GLOW PILLAR (Variants: Amber & Black in stock as per spreadsheet; Red & White out of stock)
   {
     id: 37,
     handle: "ribbed-glow-pillar",
@@ -167,14 +167,16 @@ const CANDLE_INVENTORY = [
     badge: "BESTSELLER",
     isComingSoon: false,
     notes: {
-      top: "Pure Cotton Flower & White Lily",
-      heart: "French Vanilla & Cashmere",
-      base: "Clean Sandalwood & Amber"
+      top: "Warm Amber Resin & Bergamot",
+      heart: "Spiced Honey & Golden Saffron",
+      base: "Smoked Oud & Sandalwood"
     },
-    image: "asset/Grand Pillar – White – 12.jpg",
+    image: "asset/Ribbed Glow Pillar – White.jpg",
     images: [
-      "asset/Grand Pillar – White – 12.jpg",
-      "asset/Grand Pillar – White – 12_2.jpg"
+      "asset/Ribbed Glow Pillar – Amber.jpg",
+      "asset/Ribbed Glow Pillar – Amber_2.jpg",
+      "asset/Ribbed Glow Pillar – Amber_3.jpg",
+      "asset/Ribbed Glow Pillar – Amber_4.jpg"
     ],
     desc: "Sculptural ribbed architectural pillar candle hand-poured with botanical soy wax. Features elegant fluted geometry that catches candlelight in cascading ridges.",
     dimensions: "7.5 × 7.5 × 12 cm (280g)",
@@ -189,18 +191,24 @@ const CANDLE_INVENTORY = [
         burn: "40-50 Hours",
         dimensions: "7.5 × 7.5 × 12 cm (280g)",
         available: true,
-        stock: 15,
-        badge: "BESTSELLER",
+        stock: 11,
+        badge: "NEW ARRIVAL",
+        // available: false,
+        // isOutOfStock: true,
+        // stock: 0,
+        // badge: "OUT OF STOCK",
         notes: {
           top: "Pure Cotton Flower & White Lily",
           heart: "French Vanilla & Cashmere",
           base: "Clean Sandalwood & Amber"
         },
-        desc: "Ribbed Glow Pillar in Pure White showcases tactile architectural fluting that glows with pristine purity when lit.",
-        image: "asset/Grand Pillar – White – 12.jpg",
+        desc: "Ribbed Glow Pillar in Pure White showcases tactile architectural fluting (Currently Out of Stock).",
+        image: "asset/Ribbed Glow Pillar – White.jpg",
         images: [
-          "asset/Grand Pillar – White – 12.jpg",
-          "asset/Grand Pillar – White – 12_2.jpg"
+          "asset/Ribbed Glow Pillar – White.jpg",
+          "asset/Ribbed Glow Pillar – White_2.jpg",
+          "asset/Ribbed Glow Pillar – White_3.jpg",
+          "asset/Ribbed Glow Pillar – White_4.jpg"
         ]
       },
       {
@@ -212,18 +220,20 @@ const CANDLE_INVENTORY = [
         burn: "40-50 Hours",
         dimensions: "7.5 × 7.5 × 12 cm (280g)",
         available: true,
-        stock: 12,
+        stock: 11,
         badge: "NEW ARRIVAL",
         notes: {
           top: "Crimson Clove & Pomegranate",
           heart: "Spiced Rose & Cinnamon Bark",
           base: "Velvet Amber & Cedarwood"
         },
-        desc: "Ribbed Glow Pillar in Crimson Red brings festive warmth and sculptural elegance.",
-        image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
+        desc: "Ribbed Glow Pillar in Crimson Red brings festive warmth (Currently Out of Stock).",
+        image: "asset/Ribbed Glow Pillar – Red.jpg",
         images: [
-          "asset/Classic Taper Candles – Red – Set of 2.jpg",
-          "asset/Classic Taper Candles – Red – Set of 2_2.jpg"
+          "asset/Ribbed Glow Pillar – Red.jpg",
+          "asset/Ribbed Glow Pillar – Red_2.jpg",
+          "asset/Ribbed Glow Pillar – Red_3.jpg",
+          "asset/Ribbed Glow Pillar – Red_4.jpg"
         ]
       },
       {
@@ -234,6 +244,9 @@ const CANDLE_INVENTORY = [
         origPrice: 699,
         burn: "40-50 Hours",
         dimensions: "7.5 × 7.5 × 12 cm (280g)",
+        // available: true,
+        // stock: 14,
+        // badge: "BESTSELLER",
         available: false,
         isOutOfStock: true,
         stock: 0,
@@ -243,7 +256,7 @@ const CANDLE_INVENTORY = [
           heart: "Spiced Honey & Golden Saffron",
           base: "Smoked Oud & Sandalwood"
         },
-        desc: "Ribbed Glow Pillar in Warm Amber (Currently Out of Stock).",
+        desc: "Ribbed Glow Pillar in Warm Amber radiates deep glowing warmth with spicy honey and amber notes.",
         image: "asset/Ribbed Glow Pillar – Amber.jpg",
         images: [
           "asset/Ribbed Glow Pillar – Amber.jpg",
@@ -260,6 +273,9 @@ const CANDLE_INVENTORY = [
         origPrice: 699,
         burn: "40-50 Hours",
         dimensions: "7.5 × 7.5 × 12 cm (280g)",
+        // available: true,
+        // stock: 11,
+        // badge: "NEW ARRIVAL",
         available: false,
         isOutOfStock: true,
         stock: 0,
@@ -269,7 +285,7 @@ const CANDLE_INVENTORY = [
           heart: "Leather, Cardamom & Cocoa",
           base: "Smoky Birch & Amber"
         },
-        desc: "Ribbed Glow Pillar in Midnight Black (Currently Out of Stock).",
+        desc: "Ribbed Glow Pillar in Midnight Black provides bold, modern architectural presence.",
         image: "asset/Ribbed Glow Pillar – Black.jpg",
         images: [
           "asset/Ribbed Glow Pillar – Black.jpg",
@@ -641,10 +657,10 @@ const CANDLE_INVENTORY = [
           base: "Smoky Birch & Amber"
         },
         desc: "Grand Pillar 12\" in Onyx Black provides dramatic sculptural presence (Currently Out of Stock).",
-        image: "asset/Grand Pillar – White – 12.jpg",
+        image: "asset/Grand Pillar – Black – 12.jpg",
         images: [
-          "asset/Grand Pillar – White – 12.jpg",
-          "asset/Grand Pillar – White – 12_2.jpg"
+          "asset/Grand Pillar – Black – 12.jpg",
+          "asset/Grand Pillar – Black – 12_2.jpg"
         ]
       },
       {
@@ -665,9 +681,10 @@ const CANDLE_INVENTORY = [
           base: "Velvet Amber & Cedarwood"
         },
         desc: "Grand Pillar 12\" in Crimson Red brings festive grandeur (Currently Out of Stock).",
-        image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
+        image: "asset/Grand Pillar – Red – 12.jpg",
         images: [
-          "asset/Classic Taper Candles – Red – Set of 2.jpg"
+          "asset/Grand Pillar – Red – 12.jpg",
+          "asset/Grand Pillar – Red – 12_2.jpg"
         ]
       },
       {
@@ -688,9 +705,10 @@ const CANDLE_INVENTORY = [
           base: "Smoked Oud & Sandalwood"
         },
         desc: "Grand Pillar 12\" in Warm Amber radiates deep glowing warmth (Currently Out of Stock).",
-        image: "asset/Ribbed Glow Pillar – Amber.jpg",
+        image: "asset/Grand Pillar – Amber – 12.jpg",
         images: [
-          "asset/Ribbed Glow Pillar – Amber.jpg"
+          "asset/Grand Pillar – Amber – 12.jpg",
+          "asset/Grand Pillar – Amber – 12_2.jpg"
         ]
       }
     ]
@@ -714,10 +732,10 @@ const CANDLE_INVENTORY = [
       heart: "White Lilac & Cashmere Musk",
       base: "Subtle Amber & Clean Sandalwood"
     },
-    image: "asset/Grand Pillar – White – 12.jpg",
+    image: "asset/Classic Pillar – White – 9.jpg",
     images: [
-      "asset/Grand Pillar – White – 12.jpg",
-      "asset/Grand Pillar – White – 12_2.jpg"
+      "asset/Classic Pillar – White – 9.jpg",
+      "asset/Classic Pillar – White – 9_2.jpg"
     ],
     desc: "Refined 9-inch hand-poured botanical pillar candle with balanced height and steady, smokeless illumination for consoles and candle trays.",
     dimensions: "8.5 cm ⌀ × 23 cm Height (9\" · 850g)",
@@ -740,10 +758,10 @@ const CANDLE_INVENTORY = [
           base: "Subtle Amber & Clean Sandalwood"
         },
         desc: "Classic Pillar 9\" in Pure White provides balanced height and steady, smokeless illumination.",
-        image: "asset/Grand Pillar – White – 12.jpg",
+        image: "asset/Classic Pillar – White – 9.jpg",
         images: [
-          "asset/Grand Pillar – White – 12.jpg",
-          "asset/Grand Pillar – White – 12_2.jpg"
+          "asset/Classic Pillar – White – 9.jpg",
+          "asset/Classic Pillar – White – 9_2.jpg"
         ]
       },
       {
@@ -764,10 +782,10 @@ const CANDLE_INVENTORY = [
           base: "Smoky Birch & Amber"
         },
         desc: "Classic Pillar 9\" in Onyx Black (Currently Out of Stock).",
-        image: "asset/Grand Pillar – White – 12.jpg",
+        image: "asset/Classic Pillar – Black – 9.jpg",
         images: [
-          "asset/Grand Pillar – White – 12.jpg",
-          "asset/Grand Pillar – White – 12_2.jpg"
+          "asset/Classic Pillar – Black – 9.jpg",
+          "asset/Classic Pillar – Black – 9_2.jpg"
         ]
       },
       {
@@ -788,9 +806,10 @@ const CANDLE_INVENTORY = [
           base: "Velvet Amber & Cedarwood"
         },
         desc: "Classic Pillar 9\" in Crimson Red (Currently Out of Stock).",
-        image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
+        image: "asset/Classic Pillar – Red – 9.jpg",
         images: [
-          "asset/Classic Taper Candles – Red – Set of 2.jpg"
+          "asset/Classic Pillar – Red – 9.jpg",
+          "asset/Classic Pillar – Red – 9_2.jpg"
         ]
       },
       {
@@ -811,9 +830,10 @@ const CANDLE_INVENTORY = [
           base: "Smoked Oud & Sandalwood"
         },
         desc: "Classic Pillar 9\" in Warm Amber (Currently Out of Stock).",
-        image: "asset/Ribbed Glow Pillar – Amber.jpg",
+        image: "asset/Classic Pillar – Amber – 9.jpg",
         images: [
-          "asset/Ribbed Glow Pillar – Amber.jpg"
+          "asset/Classic Pillar – Amber – 9.jpg",
+          "asset/Classic Pillar – Amber – 9_2.jpg"
         ]
       }
     ]
@@ -837,10 +857,10 @@ const CANDLE_INVENTORY = [
       heart: "White Lilac & Cashmere Musk",
       base: "Subtle Amber & Clean Sandalwood"
     },
-    image: "asset/Grand Pillar – White – 12.jpg",
+    image: "asset/Mini Pillar – White – 6.jpg",
     images: [
-      "asset/Grand Pillar – White – 12.jpg",
-      "asset/Grand Pillar – White – 12_2.jpg"
+      "asset/Mini Pillar – White – 6.jpg",
+      "asset/Mini Pillar – White – 6_2.jpg"
     ],
     desc: "Compact 6-inch hand-poured botanical pillar candle, versatile for grouping in tiered trios or styling on nightstands.",
     dimensions: "7.5 cm ⌀ × 15 cm Height (6\" · 550g)",
@@ -863,10 +883,10 @@ const CANDLE_INVENTORY = [
           base: "Subtle Amber & Clean Sandalwood"
         },
         desc: "Mini Pillar 6\" in Pure White is the versatile pillar size, ideal for grouping in tiered trios.",
-        image: "asset/Grand Pillar – White – 12.jpg",
+        image: "asset/Mini Pillar – White – 6.jpg",
         images: [
-          "asset/Grand Pillar – White – 12.jpg",
-          "asset/Grand Pillar – White – 12_2.jpg"
+          "asset/Mini Pillar – White – 6.jpg",
+          "asset/Mini Pillar – White – 6_2.jpg"
         ]
       },
       {
@@ -887,10 +907,10 @@ const CANDLE_INVENTORY = [
           base: "Smoky Birch & Amber"
         },
         desc: "Mini Pillar 6\" in Onyx Black (Currently Out of Stock).",
-        image: "asset/Grand Pillar – White – 12.jpg",
+        image: "asset/Mini Pillar – Black – 6.jpg",
         images: [
-          "asset/Grand Pillar – White – 12.jpg",
-          "asset/Grand Pillar – White – 12_2.jpg"
+          "asset/Mini Pillar – Black – 6.jpg",
+          "asset/Mini Pillar – Black – 6_2.jpg"
         ]
       },
       {
@@ -911,9 +931,10 @@ const CANDLE_INVENTORY = [
           base: "Velvet Amber & Cedarwood"
         },
         desc: "Mini Pillar 6\" in Crimson Red (Currently Out of Stock).",
-        image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
+        image: "asset/Mini Pillar – Red – 6.jpg",
         images: [
-          "asset/Classic Taper Candles – Red – Set of 2.jpg"
+          "asset/Mini Pillar – Red – 6.jpg",
+          "asset/Mini Pillar – Red – 6_2.jpg"
         ]
       },
       {
@@ -934,9 +955,10 @@ const CANDLE_INVENTORY = [
           base: "Smoked Oud & Sandalwood"
         },
         desc: "Mini Pillar 6\" in Warm Amber (Currently Out of Stock).",
-        image: "asset/Ribbed Glow Pillar – Amber.jpg",
+        image: "asset/Mini Pillar – Amber – 6.jpg",
         images: [
-          "asset/Ribbed Glow Pillar – Amber.jpg"
+          "asset/Mini Pillar – Amber – 6.jpg",
+          "asset/Mini Pillar – Amber – 6_2.jpg"
         ]
       }
     ]
@@ -971,112 +993,112 @@ const CANDLE_INVENTORY = [
   },
 
   // 8. DOUBLE GLOW JAR CANDLE
-  {
-    id: 10,
-    handle: "double-glow-jar-candle",
-    title: "Double Glow Jar Candle",
-    category: "Premium Luxury Candles",
-    price: 749,
-    origPrice: 849,
-    burn: "35-45 Hours",
-    badge: "",
-    isComingSoon: false,
-    notes: {
-      top: "Velvet Fig & Crushed Eucalyptus",
-      heart: "Cardamom, Bay Leaf & Peony",
-      base: "Sandalwood, Tonka Bean & Musk"
-    },
-    image: "asset/Double Glow Jar Candle.jpg",
-    images: [
-      "asset/Double Glow Jar Candle.jpg",
-      "asset/Double Glow Jar Candle_2.jpg",
-      "asset/Double Glow Jar Candle_3.jpg",
-      "asset/Double Glow Jar Candle_4.jpg"
-    ],
-    desc: "Dual-wick artisan jar candle engineered to ensure an even burn pool right to the glass edge without tunneling.",
-    dimensions: "10 × 10 × 9 cm (320g)",
-    stock: 18
-  },
+  // {
+  //   id: 10,
+  //   handle: "double-glow-jar-candle",
+  //   title: "Double Glow Jar Candle",
+  //   category: "Premium Luxury Candles",
+  //   price: 749,
+  //   origPrice: 849,
+  //   burn: "35-45 Hours",
+  //   badge: "",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Velvet Fig & Crushed Eucalyptus",
+  //     heart: "Cardamom, Bay Leaf & Peony",
+  //     base: "Sandalwood, Tonka Bean & Musk"
+  //   },
+  //   image: "asset/Double Glow Jar Candle.jpg",
+  //   images: [
+  //     "asset/Double Glow Jar Candle.jpg",
+  //     "asset/Double Glow Jar Candle_2.jpg",
+  //     "asset/Double Glow Jar Candle_3.jpg",
+  //     "asset/Double Glow Jar Candle_4.jpg"
+  //   ],
+  //   desc: "Dual-wick artisan jar candle engineered to ensure an even burn pool right to the glass edge without tunneling.",
+  //   dimensions: "10 × 10 × 9 cm (320g)",
+  //   stock: 18
+  // },
 
   // 9. GLOW TEA LIGHTS (Variants: Set of 50 & Set of 20)
-  {
-    id: 56,
-    handle: "glow-tea-lights",
-    title: "Glow Tea Lights",
-    category: "Premium Luxury Candles",
-    variantType: "size",
-    variantTypeLabel: "Quantity Pack",
-    price: 229,
-    origPrice: 299,
-    burn: "4-5 Hours Per Tea Light",
-    badge: "VALUE PACK",
-    isComingSoon: false,
-    notes: {
-      top: "Pure Natural Soy Base",
-      heart: "Cotton Lead-Free Wick",
-      base: "Smokeless Clean Flame"
-    },
-    image: "asset/Glow Tea Lights – Set of 50.jpg",
-    images: [
-      "asset/Glow Tea Lights – Set of 50.jpg",
-      "asset/Glow Tea Lights – Set of 50_2.jpg",
-      "asset/Glow Tea Lights – Set of 50_3.jpg",
-      "asset/Glow Tea Lights – Set of 50_4.jpg"
-    ],
-    desc: "Premium clear-cup botanical soy tea lights with extended 4-5 hour burn duration. Smokeless and soot-free for oil diffusers and votive holders.",
-    dimensions: "Standard 3.8 cm ⌀ Cups",
-    stock: 50,
-    variants: [
-      {
-        id: "tealights-set-50",
-        title: "Set of 50",
-        price: 229,
-        origPrice: 299,
-        burn: "4-5 Hours Each (250h Total)",
-        dimensions: "Box of 50 Units",
-        available: true,
-        stock: 30,
-        badge: "VALUE PACK",
-        notes: {
-          top: "Pure Natural Soy Base",
-          heart: "Cotton Lead-Free Wick",
-          base: "Smokeless Clean Flame"
-        },
-        desc: "Bulk pack of 50 high-purity soy tea lights in crystal-clear heat-resistant cups.",
-        image: "asset/Glow Tea Lights – Set of 50.jpg",
-        images: [
-          "asset/Glow Tea Lights – Set of 50.jpg",
-          "asset/Glow Tea Lights – Set of 50_2.jpg",
-          "asset/Glow Tea Lights – Set of 50_3.jpg",
-          "asset/Glow Tea Lights – Set of 50_4.jpg"
-        ]
-      },
-      {
-        id: "tealights-set-20",
-        title: "Set of 20",
-        price: 129,
-        origPrice: 149,
-        burn: "4-5 Hours Each (100h Total)",
-        dimensions: "Box of 20 Units",
-        available: true,
-        stock: 20,
-        badge: "STARTER PACK",
-        notes: {
-          top: "Pure Natural Soy Base",
-          heart: "Cotton Lead-Free Wick",
-          base: "Smokeless Clean Flame"
-        },
-        desc: "Pack of 20 high-purity soy tea lights in crystal-clear heat-resistant cups.",
-        image: "asset/Glow Tea Lights – Set of 20.jpg",
-        images: [
-          "asset/Glow Tea Lights – Set of 20.jpg",
-          "asset/Glow Tea Lights – Set of 20_2.jpg",
-          "asset/Glow Tea Lights – Set of 20_3.jpg",
-          "asset/Glow Tea Lights – Set of 20_4.jpg"
-        ]
-      }
-    ]
-  },
+  // {
+  //   id: 56,
+  //   handle: "glow-tea-lights",
+  //   title: "Glow Tea Lights",
+  //   category: "Premium Luxury Candles",
+  //   variantType: "size",
+  //   variantTypeLabel: "Quantity Pack",
+  //   price: 229,
+  //   origPrice: 299,
+  //   burn: "4-5 Hours Per Tea Light",
+  //   badge: "VALUE PACK",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Pure Natural Soy Base",
+  //     heart: "Cotton Lead-Free Wick",
+  //     base: "Smokeless Clean Flame"
+  //   },
+  //   image: "asset/Glow Tea Lights – Set of 50.jpg",
+  //   images: [
+  //     "asset/Glow Tea Lights – Set of 50.jpg",
+  //     "asset/Glow Tea Lights – Set of 50_2.jpg",
+  //     "asset/Glow Tea Lights – Set of 50_3.jpg",
+  //     "asset/Glow Tea Lights – Set of 50_4.jpg"
+  //   ],
+  //   desc: "Premium clear-cup botanical soy tea lights with extended 4-5 hour burn duration. Smokeless and soot-free for oil diffusers and votive holders.",
+  //   dimensions: "Standard 3.8 cm ⌀ Cups",
+  //   stock: 50,
+  //   variants: [
+  //     {
+  //       id: "tealights-set-50",
+  //       title: "Set of 50",
+  //       price: 229,
+  //       origPrice: 299,
+  //       burn: "4-5 Hours Each (250h Total)",
+  //       dimensions: "Box of 50 Units",
+  //       available: true,
+  //       stock: 30,
+  //       badge: "VALUE PACK",
+  //       notes: {
+  //         top: "Pure Natural Soy Base",
+  //         heart: "Cotton Lead-Free Wick",
+  //         base: "Smokeless Clean Flame"
+  //       },
+  //       desc: "Bulk pack of 50 high-purity soy tea lights in crystal-clear heat-resistant cups.",
+  //       image: "asset/Glow Tea Lights – Set of 50.jpg",
+  //       images: [
+  //         "asset/Glow Tea Lights – Set of 50.jpg",
+  //         "asset/Glow Tea Lights – Set of 50_2.jpg",
+  //         "asset/Glow Tea Lights – Set of 50_3.jpg",
+  //         "asset/Glow Tea Lights – Set of 50_4.jpg"
+  //       ]
+  //     },
+  //     {
+  //       id: "tealights-set-20",
+  //       title: "Set of 20",
+  //       price: 129,
+  //       origPrice: 149,
+  //       burn: "4-5 Hours Each (100h Total)",
+  //       dimensions: "Box of 20 Units",
+  //       available: true,
+  //       stock: 20,
+  //       badge: "STARTER PACK",
+  //       notes: {
+  //         top: "Pure Natural Soy Base",
+  //         heart: "Cotton Lead-Free Wick",
+  //         base: "Smokeless Clean Flame"
+  //       },
+  //       desc: "Pack of 20 high-purity soy tea lights in crystal-clear heat-resistant cups.",
+  //       image: "asset/Glow Tea Lights – Set of 20.jpg",
+  //       images: [
+  //         "asset/Glow Tea Lights – Set of 20.jpg",
+  //         "asset/Glow Tea Lights – Set of 20_2.jpg",
+  //         "asset/Glow Tea Lights – Set of 20_3.jpg",
+  //         "asset/Glow Tea Lights – Set of 20_4.jpg"
+  //       ]
+  //     }
+  //   ]
+  // },
 
   // 10. GOLDEN METAL LUXE JAR CANDLE
   {
@@ -1107,116 +1129,116 @@ const CANDLE_INVENTORY = [
   },
 
   // 11. GOLDEN METAL BOWL CANDLE
-  {
-    id: 42,
-    handle: "golden-metal-bowl-candle",
-    title: "Golden Metal Bowl Candle",
-    category: "Metal Collection",
-    price: 599,
-    origPrice: 699,
-    burn: "35-45 Hours",
-    badge: "",
-    isComingSoon: false,
-    notes: {
-      top: "Lemon Verbena & Neroli Blossom",
-      heart: "Ylang-Ylang & Ginger Lily",
-      base: "Golden Cedar & Soft Vanilla"
-    },
-    image: "asset/Golden Metal Bowl Candle.jpg",
-    images: [
-      "asset/Golden Metal Bowl Candle.jpg",
-      "asset/Golden Metal Bowl Candle_2.jpg",
-      "asset/Golden Metal Bowl Candle_3.jpg",
-      "asset/Golden Metal Bowl Candle_4.jpg"
-    ],
-    desc: "Hammered brass-look metal bowl candle designed to serve as an opulent dining centerpiece.",
-    dimensions: "12 × 12 × 5.5 cm (260g)",
-    stock: 16
-  },
+  // {
+  //   id: 42,
+  //   handle: "golden-metal-bowl-candle",
+  //   title: "Golden Metal Bowl Candle",
+  //   category: "Metal Collection",
+  //   price: 599,
+  //   origPrice: 699,
+  //   burn: "35-45 Hours",
+  //   badge: "",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Lemon Verbena & Neroli Blossom",
+  //     heart: "Ylang-Ylang & Ginger Lily",
+  //     base: "Golden Cedar & Soft Vanilla"
+  //   },
+  //   image: "asset/Golden Metal Bowl Candle.jpg",
+  //   images: [
+  //     "asset/Golden Metal Bowl Candle.jpg",
+  //     "asset/Golden Metal Bowl Candle_2.jpg",
+  //     "asset/Golden Metal Bowl Candle_3.jpg",
+  //     "asset/Golden Metal Bowl Candle_4.jpg"
+  //   ],
+  //   desc: "Hammered brass-look metal bowl candle designed to serve as an opulent dining centerpiece.",
+  //   dimensions: "12 × 12 × 5.5 cm (260g)",
+  //   stock: 16
+  // },
 
   // 12. HAZY METAL LUXE JAR CANDLE
-  {
-    id: 43,
-    handle: "hazy-metal-luxe-jar-candle",
-    title: "Hazy Metal Luxe Jar Candle",
-    category: "Metal Collection",
-    price: 749,
-    origPrice: 799,
-    burn: "40-50 Hours",
-    badge: "BESTSELLER",
-    isComingSoon: false,
-    notes: {
-      top: "Smoked Sage & Crisp Apple",
-      heart: "Cashmere Wood & White Birch",
-      base: "Deep Amber & Roasted Tonka"
-    },
-    image: "asset/Hazy Metal Luxe Jar Candle.jpg",
-    images: [
-      "asset/Hazy Metal Luxe Jar Candle.jpg",
-      "asset/Hazy Metal Luxe Jar Candle_2.jpg",
-      "asset/Hazy Metal Luxe Jar Candle_3.jpg",
-      "asset/Hazy Metal Luxe Jar Candle_4.jpg"
-    ],
-    desc: "Matte gunmetal and hazy burnished finish creating an alluring moody ambiance when illuminated.",
-    dimensions: "8.5 × 8.5 × 10 cm (280g)",
-    stock: 14
-  },
+  // {
+  //   id: 43,
+  //   handle: "hazy-metal-luxe-jar-candle",
+  //   title: "Hazy Metal Luxe Jar Candle",
+  //   category: "Metal Collection",
+  //   price: 749,
+  //   origPrice: 799,
+  //   burn: "40-50 Hours",
+  //   badge: "BESTSELLER",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Smoked Sage & Crisp Apple",
+  //     heart: "Cashmere Wood & White Birch",
+  //     base: "Deep Amber & Roasted Tonka"
+  //   },
+  //   image: "asset/Hazy Metal Luxe Jar Candle.jpg",
+  //   images: [
+  //     "asset/Hazy Metal Luxe Jar Candle.jpg",
+  //     "asset/Hazy Metal Luxe Jar Candle_2.jpg",
+  //     "asset/Hazy Metal Luxe Jar Candle_3.jpg",
+  //     "asset/Hazy Metal Luxe Jar Candle_4.jpg"
+  //   ],
+  //   desc: "Matte gunmetal and hazy burnished finish creating an alluring moody ambiance when illuminated.",
+  //   dimensions: "8.5 × 8.5 × 10 cm (280g)",
+  //   stock: 14
+  // },
 
   // 13. FLORAL GLOW METAL COLLECTION – SET OF 3 (Coming Soon)
-  {
-    id: 44,
-    handle: "floral-glow-metal-set-of-3",
-    title: "Floral Glow Metal Collection – Set of 3",
-    category: "Metal Collection",
-    price: 849,
-    origPrice: 999,
-    burn: "25 Hours Per Vessel",
-    badge: "COMING SOON",
-    isComingSoon: true,
-    notes: {
-      top: "Peony Petals & Crushed Freesia",
-      heart: "Night Jasmine & Magnolia",
-      base: "White Musks & Soft Cashmere"
-    },
-    image: "asset/Floral Glow Metal Collection – Set of 3.jpg",
-    images: [
-      "asset/Floral Glow Metal Collection – Set of 3.jpg",
-      "asset/Floral Glow Metal Collection – Set of 3_2.jpg",
-      "asset/Floral Glow Metal Collection – Set of 3_3.jpg",
-      "asset/Floral Glow Metal Collection – Set of 3_4.jpg"
-    ],
-    desc: "Trio of engraved botanical metal votives in rose gold, champagne gold, and burnished bronze.",
-    dimensions: "Boxed Trio (3 × 120g)",
-    stock: 0
-  },
+  // {
+  //   id: 44,
+  //   handle: "floral-glow-metal-set-of-3",
+  //   title: "Floral Glow Metal Collection – Set of 3",
+  //   category: "Metal Collection",
+  //   price: 849,
+  //   origPrice: 999,
+  //   burn: "25 Hours Per Vessel",
+  //   badge: "COMING SOON",
+  //   isComingSoon: true,
+  //   notes: {
+  //     top: "Peony Petals & Crushed Freesia",
+  //     heart: "Night Jasmine & Magnolia",
+  //     base: "White Musks & Soft Cashmere"
+  //   },
+  //   image: "asset/Floral Glow Metal Collection – Set of 3.jpg",
+  //   images: [
+  //     "asset/Floral Glow Metal Collection – Set of 3.jpg",
+  //     "asset/Floral Glow Metal Collection – Set of 3_2.jpg",
+  //     "asset/Floral Glow Metal Collection – Set of 3_3.jpg",
+  //     "asset/Floral Glow Metal Collection – Set of 3_4.jpg"
+  //   ],
+  //   desc: "Trio of engraved botanical metal votives in rose gold, champagne gold, and burnished bronze.",
+  //   dimensions: "Boxed Trio (3 × 120g)",
+  //   stock: 0
+  // },
 
   // 14. METAL GLOW VOTIVE
-  {
-    id: 45,
-    handle: "metal-glow-votive",
-    title: "Metal Glow Votive",
-    category: "Metal Collection",
-    price: 499,
-    origPrice: 599,
-    burn: "25-30 Hours",
-    badge: "",
-    isComingSoon: false,
-    notes: {
-      top: "Crushed Pink Peppercorn",
-      heart: "Orris Root & Black Violet",
-      base: "Velvet Amber & Patchouli"
-    },
-    image: "asset/Metal Glow Votive.jpg",
-    images: [
-      "asset/Metal Glow Votive.jpg",
-      "asset/Metal Glow Votive_2.jpg",
-      "asset/Metal Glow Votive_3.jpg",
-      "asset/Metal Glow Votive_4.jpg"
-    ],
-    desc: "Petite metallic votive engineered with pure botanical wax for powder rooms and bedside rituals.",
-    dimensions: "6.5 × 6.5 × 7.5 cm (160g)",
-    stock: 25
-  },
+  // {
+  //   id: 45,
+  //   handle: "metal-glow-votive",
+  //   title: "Metal Glow Votive",
+  //   category: "Metal Collection",
+  //   price: 499,
+  //   origPrice: 599,
+  //   burn: "25-30 Hours",
+  //   badge: "",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Crushed Pink Peppercorn",
+  //     heart: "Orris Root & Black Violet",
+  //     base: "Velvet Amber & Patchouli"
+  //   },
+  //   image: "asset/Metal Glow Votive.jpg",
+  //   images: [
+  //     "asset/Metal Glow Votive.jpg",
+  //     "asset/Metal Glow Votive_2.jpg",
+  //     "asset/Metal Glow Votive_3.jpg",
+  //     "asset/Metal Glow Votive_4.jpg"
+  //   ],
+  //   desc: "Petite metallic votive engineered with pure botanical wax for powder rooms and bedside rituals.",
+  //   dimensions: "6.5 × 6.5 × 7.5 cm (160g)",
+  //   stock: 25
+  // },
 
   // 15. REED DIFFUSER (Variants: Oud & Neroli)
   {
@@ -1301,66 +1323,66 @@ const CANDLE_INVENTORY = [
   },
 
   // 17. TRIO AROMA DIFFUSER SET
-  {
-    id: 52,
-    handle: "trio-aroma-diffuser-set",
-    title: "Trio Aroma Diffuser Set",
-    category: "Diffusers and Aromas",
-    price: 799,
-    origPrice: 899,
-    burn: "45 Days Each (3 Vessels)",
-    badge: "GIFT SET",
-    isComingSoon: false,
-    notes: {
-      top: "Neroli, Lavender & Eucalyptus",
-      heart: "Rose, Jasmine & Peony",
-      base: "Sandalwood, Vanilla & Cedar"
-    },
-    image: "asset/Trio Aroma Diffuser Set.jpg",
-    images: [
-      "asset/Trio Aroma Diffuser Set.jpg",
-      "asset/Trio Aroma Diffuser Set_2.jpg",
-      "asset/Trio Aroma Diffuser Set_3.jpg",
-      "asset/Trio Aroma Diffuser Set_4.jpg"
-    ],
-    desc: "Curated gift set of three signature diffuser aromas (50ml each) for living room, bedroom, and bath sanctuaries.",
-    dimensions: "Gift Box (3 × 50ml + Reeds)",
-    stock: 20
-  },
+  // {
+  //   id: 52,
+  //   handle: "trio-aroma-diffuser-set",
+  //   title: "Trio Aroma Diffuser Set",
+  //   category: "Diffusers and Aromas",
+  //   price: 799,
+  //   origPrice: 899,
+  //   burn: "45 Days Each (3 Vessels)",
+  //   badge: "GIFT SET",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Neroli, Lavender & Eucalyptus",
+  //     heart: "Rose, Jasmine & Peony",
+  //     base: "Sandalwood, Vanilla & Cedar"
+  //   },
+  //   image: "asset/Trio Aroma Diffuser Set.jpg",
+  //   images: [
+  //     "asset/Trio Aroma Diffuser Set.jpg",
+  //     "asset/Trio Aroma Diffuser Set_2.jpg",
+  //     "asset/Trio Aroma Diffuser Set_3.jpg",
+  //     "asset/Trio Aroma Diffuser Set_4.jpg"
+  //   ],
+  //   desc: "Curated gift set of three signature diffuser aromas (50ml each) for living room, bedroom, and bath sanctuaries.",
+  //   dimensions: "Gift Box (3 × 50ml + Reeds)",
+  //   stock: 20
+  // },
 
   // 18. SCENTED WARDROBE WAX TABLETS
-  {
-    id: 65,
-    handle: "scented-wardrobe-wax-tablets",
-    title: "Scented Wardrobe Wax Tablets",
-    category: "Home essentials",
-    price: 449,
-    origPrice: 499,
-    burn: "90+ Days Aroma Dispersion",
-    badge: "NEW ARRIVAL",
-    isComingSoon: false,
-    notes: {
-      top: "Dried French Lavender Buds",
-      heart: "Damask Rosebuds & Cinnamon Bark",
-      base: "Cedar Chips & Pure Beeswax/Soy"
-    },
-    image: "asset/Scented Wardrobe Wax Tablets.jpg",
-    images: [
-      "asset/Scented Wardrobe Wax Tablets.jpg",
-      "asset/Scented Wardrobe Wax Tablets_2.jpg",
-      "asset/Scented Wardrobe Wax Tablets_3.jpg",
-      "asset/Scented Wardrobe Wax Tablets_4.jpg"
-    ],
-    desc: "Artisanal pressed botanical wax tablets adorned with dried whole botanicals and silk hanging ribbons. Infuses closets, linens, and drawers with delicate natural fragrance.",
-    dimensions: "Set of 2 Wax Ornaments",
-    stock: 28
-  },
+  // {
+  //   id: 65,
+  //   handle: "scented-wardrobe-wax-tablets",
+  //   title: "Scented Wardrobe Wax Tablets",
+  //   category: "Home essentials",
+  //   price: 449,
+  //   origPrice: 499,
+  //   burn: "90+ Days Aroma Dispersion",
+  //   badge: "NEW ARRIVAL",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Dried French Lavender Buds",
+  //     heart: "Damask Rosebuds & Cinnamon Bark",
+  //     base: "Cedar Chips & Pure Beeswax/Soy"
+  //   },
+  //   image: "asset/Scented Wardrobe Wax Tablets.jpg",
+  //   images: [
+  //     "asset/Scented Wardrobe Wax Tablets.jpg",
+  //     "asset/Scented Wardrobe Wax Tablets_2.jpg",
+  //     "asset/Scented Wardrobe Wax Tablets_3.jpg",
+  //     "asset/Scented Wardrobe Wax Tablets_4.jpg"
+  //   ],
+  //   desc: "Artisanal pressed botanical wax tablets adorned with dried whole botanicals and silk hanging ribbons. Infuses closets, linens, and drawers with delicate natural fragrance.",
+  //   dimensions: "Set of 2 Wax Ornaments",
+  //   stock: 28
+  // },
 
   // 19. SEVEN CHAKRA CANDLES - AMETHYST & TIGER EYE
   {
     id: 66,
     handle: "seven-chakra-candles",
-    title: "Seven Chakra Candles – Amethyst & Tiger Eye",
+    title: "Seven Chakra Candles- Amethyst and tiger",
     category: "Seven Chakra- Positivity collection",
     price: 699,
     origPrice: 749,
@@ -1372,12 +1394,12 @@ const CANDLE_INVENTORY = [
       heart: "Lavender Blossom & Palo Santo",
       base: "Myrrh, Golden Amber & Sandalwood"
     },
-    image: "asset/Seven Chakra Candle Set – Set of 7.jpg",
+    image: "asset/Seven Chakra Candles- Amethyst and tiger.jpg",
     images: [
-      "asset/Seven Chakra Candle Set – Set of 7.jpg",
-      "asset/Seven Chakra Candle Set – Set of 7_2.jpg",
-      "asset/Seven Chakra Candle Set – Set of 7_3.jpg",
-      "asset/Seven Chakra Candle Set – Set of 7_4.jpg"
+      "asset/Seven Chakra Candles- Amethyst and tiger.jpg",
+      "asset/Seven Chakra Candles- Amethyst and tiger_2.jpg",
+      "asset/Seven Chakra Candles- Amethyst and tiger_3.jpg",
+      "asset/Seven Chakra Candles- Amethyst and tiger_4.jpg"
     ],
     desc: "Holistic positivity candle embedded with genuine raw Amethyst and Tiger's Eye crystals. Crafted to harmonize energy centers, deepen meditation, and promote serenity.",
     dimensions: "9 × 9 × 8 cm (300g)",
