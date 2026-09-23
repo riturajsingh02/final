@@ -576,6 +576,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+body.modal-open {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -2530,14 +2535,36 @@ body.drawer-open {
   transform: scale(0.92);
 }
 
-/* Product Quick View Modal (PDP) */
+/* =========================================================
+   PRODUCT QUICK VIEW MODAL (PDP) — ULTRA RESPONSIVE
+   Optimized for Desktops, Tablets, iPads & iPhones
+   ========================================================= */
 .pdp-modal {
   width: 92%;
   max-width: 960px;
+  max-height: 90vh;
+  max-height: 90dvh;
   padding: 2.25rem;
   background: #FFFFFF;
   border: 1px solid rgba(212, 175, 55, 0.25);
-  border-radius: 12px;
+  border-radius: 14px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -48%) scale(0.96);
+  box-shadow: 0 24px 60px rgba(43, 5, 11, 0.28), 0 0 0 1px rgba(212, 175, 55, 0.22);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
+  z-index: 2200;
+}
+
+.pdp-modal.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .pdp-modal-grid {
@@ -2559,13 +2586,14 @@ body.drawer-open {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1;
-  min-height: 380px;
+  min-height: 340px;
   max-height: 480px;
   border-radius: 12px;
   overflow: hidden;
   background: #FAF6F0;
   box-shadow: 0 6px 20px rgba(43, 5, 11, 0.08);
   border: 1px solid rgba(212, 175, 55, 0.18);
+  touch-action: pan-y pinch-zoom;
 }
 
 .pdp-slider-track {
@@ -2577,6 +2605,7 @@ body.drawer-open {
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  touch-action: pan-x;
 }
 
 .pdp-slider-track::-webkit-scrollbar {
@@ -2601,6 +2630,8 @@ body.drawer-open {
   object-position: center;
   display: block;
   transition: transform 0.4s ease;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .pdp-main-slider-wrap:hover .pdp-slider-slide img {
@@ -2614,8 +2645,9 @@ body.drawer-open {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(212, 175, 55, 0.4);
   color: #2B050B;
   display: flex;
@@ -2625,7 +2657,8 @@ body.drawer-open {
   z-index: 6;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.25s ease;
-  opacity: 0.85;
+  opacity: 0.88;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .pdp-gallery-arrow:hover {
@@ -2637,11 +2670,11 @@ body.drawer-open {
 }
 
 .pdp-gallery-prev {
-  left: 12px;
+  left: 10px;
 }
 
 .pdp-gallery-next {
-  right: 12px;
+  right: 10px;
 }
 
 .pdp-thumbs-row {
@@ -2661,6 +2694,7 @@ body.drawer-open {
   padding: 0;
   transition: all 0.2s ease;
   box-shadow: 0 2px 6px rgba(43, 5, 11, 0.05);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .pdp-thumb-item img {
@@ -2683,6 +2717,7 @@ body.drawer-open {
 .pdp-info {
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .pdp-header-meta {
@@ -2692,6 +2727,7 @@ body.drawer-open {
   gap: 0.75rem;
   margin-bottom: 0.35rem;
   padding-right: 2.5rem;
+  flex-wrap: wrap;
 }
 
 .pdp-category-tag {
@@ -2718,6 +2754,7 @@ body.drawer-open {
   background: #2E7D32;
   box-shadow: 0 0 0 rgba(46, 125, 50, 0.4);
   animation: pulseGreen 2s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulseGreen {
@@ -2728,11 +2765,12 @@ body.drawer-open {
 
 .pdp-title {
   font-family: var(--font-serif);
-  font-size: clamp(1.65rem, 2.4vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.4vw, 2.1rem);
   color: var(--cabernet);
   margin: 0.2rem 0 0.5rem;
-  line-height: 1.15;
+  line-height: 1.2;
   font-weight: 600;
+  word-break: break-word;
 }
 
 .pdp-pricing {
@@ -2812,6 +2850,7 @@ body.drawer-open {
   font-weight: 600;
   color: var(--cabernet);
   min-width: 90px;
+  flex-shrink: 0;
 }
 
 .scent-val {
@@ -2827,6 +2866,7 @@ body.drawer-open {
   border-top: 1px dashed rgba(212, 175, 55, 0.25);
   padding-top: 0.5rem;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .scent-footer-meta strong {
@@ -2865,6 +2905,7 @@ body.drawer-open {
 
 .pincode-input-group input {
   flex: 1;
+  min-width: 0;
   padding: 0.6rem 0.85rem;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
@@ -2892,6 +2933,8 @@ body.drawer-open {
   cursor: pointer;
   transition: all 0.2s;
   white-space: nowrap;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .pincode-input-group button:hover {
@@ -2905,6 +2948,7 @@ body.drawer-open {
   font-weight: 500;
   margin-top: 0.45rem;
   min-height: 1.1rem;
+  line-height: 1.4;
 }
 
 /* PDP Add to bag button */
@@ -2913,6 +2957,7 @@ body.drawer-open {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
+  min-height: 48px;
   padding: 0.85rem 1.5rem;
   font-size: 0.84rem;
   letter-spacing: 1.5px;
@@ -2926,6 +2971,8 @@ body.drawer-open {
   transition: all 0.25s ease;
   box-shadow: 0 4px 14px rgba(43, 5, 11, 0.2);
   width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .pdp-add-bag-btn:hover {
@@ -2947,6 +2994,285 @@ body.drawer-open {
   font-size: 0.68rem;
   color: var(--text-muted);
   flex-wrap: wrap;
+}
+
+.pdp-trust-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.pdp-trust-row span svg {
+  stroke: #2E7D32;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   TABLET & IPAD RESPONSIVE STYLES (≤ 1024px)
+   ========================================================= */
+@media (max-width: 1024px) {
+  .pdp-modal {
+    width: 94%;
+    max-width: 760px;
+    padding: 1.75rem;
+    max-height: 88vh;
+    max-height: 88dvh;
+  }
+
+  .pdp-modal-grid {
+    gap: 1.75rem;
+  }
+
+  .pdp-main-slider-wrap {
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .pdp-title {
+    font-size: 1.65rem;
+  }
+}
+
+/* =========================================================
+   MOBILE & IPHONE RESPONSIVE STYLES (≤ 768px)
+   Features Luxury Bottom-Sheet Modal, Native Swipe & Safe Areas
+   ========================================================= */
+@media (max-width: 768px) {
+  .pdp-modal {
+    width: 100%;
+    max-width: 100%;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    border-radius: 20px 20px 0 0;
+    padding: 1.35rem 1.15rem calc(1.5rem + env(safe-area-inset-bottom, 16px));
+    max-height: 90vh;
+    max-height: 90dvh;
+    border: none;
+    border-top: 1.5px solid rgba(212, 175, 55, 0.35);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.35);
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  }
+
+  .pdp-modal.active {
+    transform: translateY(0);
+  }
+
+  /* Sticky Top Close Button for Mobile Accessibility */
+  .pdp-modal .modal-close-btn {
+    top: 10px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(122, 23, 32, 0.2);
+    box-shadow: 0 4px 14px rgba(43, 5, 11, 0.16);
+    z-index: 120;
+  }
+
+  .pdp-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .pdp-media {
+    gap: 0.6rem;
+  }
+
+  .pdp-main-slider-wrap {
+    min-height: unset;
+    aspect-ratio: 1.15 / 1;
+    max-height: 320px;
+    border-radius: 10px;
+  }
+
+  .pdp-gallery-arrow {
+    width: 34px;
+    height: 34px;
+    opacity: 0.92;
+  }
+
+  .pdp-gallery-prev {
+    left: 8px;
+  }
+
+  .pdp-gallery-next {
+    right: 8px;
+  }
+
+  .pdp-thumbs-row {
+    gap: 0.4rem;
+  }
+
+  .pdp-thumb-item {
+    border-radius: 6px;
+  }
+
+  .pdp-header-meta {
+    padding-right: 2.8rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .pdp-title {
+    font-size: 1.4rem;
+    margin: 0.15rem 0 0.4rem;
+  }
+
+  .pdp-pricing {
+    gap: 0.45rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.6rem;
+  }
+
+  .pdp-current-price {
+    font-size: 1.3rem;
+  }
+
+  .pdp-tax-note {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 2px;
+  }
+
+  .pdp-variant-block {
+    margin: 0.5rem 0 1rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .pdp-variant-selector-grid {
+    gap: 0.45rem;
+  }
+
+  .pdp-swatch-btn {
+    min-height: 38px;
+    padding: 0.35rem 0.65rem 0.35rem 0.4rem;
+    gap: 0.4rem;
+  }
+
+  .pdp-swatch-name {
+    font-size: 0.76rem;
+  }
+
+  .pdp-size-pill {
+    min-height: 40px;
+    padding: 0.4rem 0.75rem;
+    gap: 0.35rem;
+  }
+
+  .pdp-pill-title {
+    font-size: 0.76rem;
+  }
+
+  .pdp-desc {
+    font-size: 0.82rem;
+    line-height: 1.55;
+    margin-bottom: 0.85rem;
+  }
+
+  .scent-pyramid-card {
+    padding: 0.85rem 0.95rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .scent-item {
+    font-size: 0.78rem;
+  }
+
+  .scent-label {
+    min-width: 80px;
+  }
+
+  .pincode-widget {
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 0.95rem;
+  }
+
+  .pdp-add-bag-btn {
+    min-height: 46px;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+
+  .pdp-trust-row {
+    font-size: 0.64rem;
+    gap: 0.4rem;
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   COMPACT SCREENS & IPHONE SE / MINI (≤ 480px & ≤ 380px)
+   ========================================================= */
+@media (max-width: 480px) {
+  .pdp-modal {
+    padding: 1.1rem 0.9rem calc(1.25rem + env(safe-area-inset-bottom, 12px));
+    max-height: 92vh;
+    max-height: 92dvh;
+  }
+
+  .pdp-main-slider-wrap {
+    aspect-ratio: 1.2 / 1;
+    max-height: 250px;
+  }
+
+  .pdp-title {
+    font-size: 1.28rem;
+  }
+
+  .pincode-input-group {
+    flex-direction: row;
+  }
+
+  .pincode-input-group input {
+    font-size: 0.8rem;
+    padding: 0.55rem 0.75rem;
+  }
+
+  .pincode-input-group button {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.7rem;
+  }
+
+  .pdp-swatch-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .pdp-size-pill {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 360px) {
+  .pdp-main-slider-wrap {
+    max-height: 210px;
+  }
+
+  .pdp-title {
+    font-size: 1.18rem;
+  }
+
+  .pincode-input-group {
+    flex-direction: column;
+  }
+
+  .pincode-input-group button {
+    width: 100%;
+  }
+
+  .scent-item {
+    flex-direction: column;
+    gap: 2px;
+  }
 }
 
 .pdp-trust-row span {
