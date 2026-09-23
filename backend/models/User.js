@@ -103,6 +103,20 @@ export class User {
   }
 
   /**
+   * Link Google account to existing user
+   */
+  static async linkGoogleAccount(userId, googleId, isEmailVerified = true) {
+    if (!userId || !googleId) return null;
+    return await db.users.updateById(userId, {
+      googleId,
+      isEmailVerified: Boolean(isEmailVerified),
+      failedLoginAttempts: 0,
+      lockoutUntil: null,
+      lastLoginAt: new Date().toISOString()
+    });
+  }
+
+  /**
    * Verify password with bcrypt
    */
   static async verifyPassword(user, plainPassword) {
