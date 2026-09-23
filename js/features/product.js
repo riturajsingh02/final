@@ -46,6 +46,7 @@ function openPDP(productId, variantId) {
 
   // Open modal & overlay
   pdpModal.classList.add('active');
+  document.body.classList.add('modal-open');
   const overlay = dom.drawerOverlay || document.getElementById('drawerOverlay');
   if (overlay) overlay.classList.add('active');
 
@@ -366,6 +367,7 @@ function updatePdpThumbs() {
 function closePDP() {
   const pdpModal = dom.pdpModal || document.getElementById('pdpModal');
   if (pdpModal) pdpModal.classList.remove('active');
+  document.body.classList.remove('modal-open');
   const overlay = dom.drawerOverlay || document.getElementById('drawerOverlay');
   if (overlay) overlay.classList.remove('active');
   activePdpProductId = null;
