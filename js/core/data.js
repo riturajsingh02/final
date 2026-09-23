@@ -1389,8 +1389,8 @@ const CANDLE_INVENTORY = [
     image: "asset/Seven Chakra Candles- Amethyst and tiger.jpg",
     images: [
       "asset/Seven Chakra Candles- Amethyst and tiger.jpg"
-       "asset/Seven Chakra Candles- Amethyst and tiger_2.jpg"
-       "asset/Seven Chakra Candles- Amethyst and tiger_3.jpg"
+       // "asset/Seven Chakra Candles- Amethyst and tiger_2.jpg"
+       // "asset/Seven Chakra Candles- Amethyst and tiger_3.jpg"
     ],
     desc: "Holistic positivity candle embedded with genuine raw Amethyst and Tiger's Eye crystals. Crafted to harmonize energy centers, deepen meditation, and promote serenity.",
     dimensions: "9 × 9 × 8 cm (300g)",
