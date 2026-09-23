@@ -578,7 +578,7 @@ body {
 
 body.modal-open {
   overflow: hidden !important;
-  touch-action: none;
+  touch-action: auto;
 }
 
 a {
@@ -2476,7 +2476,9 @@ body.drawer-open {
   max-height: 90vh;
   max-height: 90dvh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
   transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.28s;
 }
 
@@ -3040,25 +3042,34 @@ body.drawer-open {
    ========================================================= */
 @media (max-width: 768px) {
   .pdp-modal {
-    width: 100%;
-    max-width: 100%;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: translateY(100%);
-    border-radius: 20px 20px 0 0;
-    padding: 1.35rem 1.15rem calc(1.5rem + env(safe-area-inset-bottom, 16px));
-    max-height: 90vh;
-    max-height: 90dvh;
-    border: none;
-    border-top: 1.5px solid rgba(212, 175, 55, 0.35);
-    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.35);
-    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    width: 100% !important;
+    max-width: 100% !important;
+    top: auto !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: translateY(100%) !important;
+    border-radius: 20px 20px 0 0 !important;
+    padding: 1.25rem 1.15rem calc(1.5rem + env(safe-area-inset-bottom, 16px)) !important;
+    max-height: 90vh !important;
+    max-height: 90dvh !important;
+    max-height: 90svh !important;
+    border: none !important;
+    border-top: 1.5px solid rgba(212, 175, 55, 0.4) !important;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.35) !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease !important;
+    z-index: 2200 !important;
   }
 
   .pdp-modal.active {
-    transform: translateY(0);
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) !important;
   }
 
   /* Sticky Top Close Button for Mobile Accessibility */
@@ -3069,72 +3080,150 @@ body.drawer-open {
     height: 36px;
     min-width: 36px;
     min-height: 36px;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(122, 23, 32, 0.2);
     box-shadow: 0 4px 14px rgba(43, 5, 11, 0.16);
     z-index: 120;
+    border-radius: 50%;
   }
 
   .pdp-modal-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.15rem !important;
+    width: 100% !important;
   }
 
   .pdp-media {
-    gap: 0.6rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
   }
 
   .pdp-main-slider-wrap {
-    min-height: 380px;
-    height: 400px;
-    max-height: 50vh;
-    max-height: 50dvh;
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    position: relative !important;
+    width: 100% !important;
+    height: clamp(200px, 48vw, 280px) !important;
+    min-height: 190px !important;
+    max-height: 280px !important;
+    aspect-ratio: auto !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+
+  .pdp-slider-track {
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .pdp-slider-slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    scroll-snap-align: start !important;
+  }
+
+  .pdp-slider-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
 
   .pdp-gallery-arrow {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     opacity: 0.92;
   }
 
   .pdp-gallery-prev {
-    left: 8px;
+    left: 6px;
   }
 
   .pdp-gallery-next {
-    right: 8px;
+    right: 6px;
   }
 
   .pdp-thumbs-row {
-    gap: 0.4rem;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.4rem !important;
+    width: 100% !important;
+    height: auto !important;
   }
 
   .pdp-thumb-item {
-    border-radius: 6px;
+    height: 52px !important;
+    aspect-ratio: auto !important;
+    border-radius: 6px !important;
+  }
+
+  .pdp-thumb-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .pdp-info {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
   }
 
   .pdp-header-meta {
-    padding-right: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
     margin-bottom: 0.25rem;
+    padding-right: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pdp-category-tag {
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+  }
+
+  .pdp-stock-status {
+    font-size: 0.72rem;
   }
 
   .pdp-title {
-    font-size: 1.4rem;
-    margin: 0.15rem 0 0.4rem;
+    font-size: clamp(1.35rem, 5vw, 1.7rem) !important;
+    margin: 0.15rem 0 0.4rem !important;
+    line-height: 1.25 !important;
   }
 
   .pdp-pricing {
-    gap: 0.45rem;
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-bottom: 0.75rem;
     padding-bottom: 0.6rem;
   }
 
   .pdp-current-price {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
+  }
+
+  .pdp-orig-price {
+    font-size: 0.9rem;
   }
 
   .pdp-tax-note {
@@ -3144,8 +3233,20 @@ body.drawer-open {
   }
 
   .pdp-variant-block {
-    margin: 0.5rem 0 1rem;
+    margin: 0.5rem 0 0.85rem;
     padding: 0.75rem 0.85rem;
+  }
+
+  .pdp-variant-label-row {
+    margin-bottom: 0.5rem;
+  }
+
+  .pdp-variant-type-title {
+    font-size: 0.75rem;
+  }
+
+  .pdp-variant-current-val {
+    font-size: 0.85rem;
   }
 
   .pdp-variant-selector-grid {
@@ -3153,7 +3254,7 @@ body.drawer-open {
   }
 
   .pdp-swatch-btn {
-    min-height: 38px;
+    min-height: 36px;
     padding: 0.35rem 0.65rem 0.35rem 0.4rem;
     gap: 0.4rem;
   }
@@ -3163,7 +3264,7 @@ body.drawer-open {
   }
 
   .pdp-size-pill {
-    min-height: 40px;
+    min-height: 38px;
     padding: 0.4rem 0.75rem;
     gap: 0.35rem;
   }
@@ -3172,41 +3273,65 @@ body.drawer-open {
     font-size: 0.76rem;
   }
 
+  .pdp-pill-price {
+    font-size: 0.72rem;
+  }
+
   .pdp-desc {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     line-height: 1.55;
     margin-bottom: 0.85rem;
   }
 
   .scent-pyramid-card {
     padding: 0.85rem 0.95rem;
-    margin-bottom: 0.95rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .scent-card-header {
+    margin-bottom: 0.45rem;
+  }
+
+  .scent-grid {
+    gap: 0.3rem;
+    margin-bottom: 0.45rem;
   }
 
   .scent-item {
-    font-size: 0.78rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    gap: 4px;
   }
 
   .scent-label {
-    min-width: 80px;
+    min-width: 85px;
+    font-weight: 600;
+  }
+
+  .scent-footer-meta {
+    font-size: 0.74rem;
+    padding-top: 0.45rem;
+    margin-top: 0.45rem;
   }
 
   .pincode-widget {
     padding: 0.75rem 0.85rem;
-    margin-bottom: 0.95rem;
+    margin-bottom: 0.85rem;
   }
 
   .pdp-add-bag-btn {
-    min-height: 46px;
-    padding: 0.8rem 1.25rem;
-    font-size: 0.8rem;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.82rem;
     letter-spacing: 1px;
   }
 
   .pdp-trust-row {
-    font-size: 0.64rem;
+    font-size: 0.65rem;
     gap: 0.4rem;
     justify-content: center;
+    margin-top: 0.75rem;
+    padding-top: 0.65rem;
   }
 }
 
@@ -3215,22 +3340,21 @@ body.drawer-open {
    ========================================================= */
 @media (max-width: 480px) {
   .pdp-modal {
-    padding: 1.1rem 0.9rem calc(1.25rem + env(safe-area-inset-bottom, 12px));
-    max-height: 92vh;
-    max-height: 92dvh;
+    padding: 1.1rem 0.9rem calc(1.25rem + env(safe-area-inset-bottom, 12px)) !important;
+    max-height: 92vh !important;
+    max-height: 92dvh !important;
+    max-height: 92svh !important;
   }
 
   .pdp-main-slider-wrap {
-    aspect-ratio: 1 / 1;
-    min-height: 330px;
-    height: 350px;
-    max-height: 48vh;
-    max-height: 48dvh;
-    border-radius: 10px;
+    height: clamp(190px, 48vw, 240px) !important;
+    min-height: 180px !important;
+    max-height: 240px !important;
+    border-radius: 10px !important;
   }
 
   .pdp-title {
-    font-size: 1.28rem;
+    font-size: 1.28rem !important;
   }
 
   .pincode-input-group {
@@ -3260,14 +3384,13 @@ body.drawer-open {
 
 @media (max-width: 360px) {
   .pdp-main-slider-wrap {
-    min-height: 290px;
-    height: 300px;
-    max-height: 45vh;
-    max-height: 45dvh;
+    height: 180px !important;
+    min-height: 170px !important;
+    max-height: 190px !important;
   }
 
   .pdp-title {
-    font-size: 1.18rem;
+    font-size: 1.18rem !important;
   }
 
   .pincode-input-group {
@@ -4163,9 +4286,7 @@ body.drawer-open {
   }
   .banner-title { font-size: 2rem; }
   
-  .pdp-modal-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .pdp-media { height: 280px; }
-  .pdp-modal, .checkout-modal, .policy-modal {
+  .checkout-modal, .policy-modal {
     width: 95%;
     max-width: 500px;
     padding: 1.25rem;
@@ -4985,7 +5106,6 @@ select {
     font-size: 0.84rem;
   }
 
-  .pdp-modal,
   .checkout-modal,
   .policy-modal {
     width: min(calc(100vw - 20px), 520px);
@@ -5004,21 +5124,6 @@ select {
     min-width: 35px;
     min-height: 35px;
     z-index: 100;
-  }
-
-  .pdp-modal-grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
-  }
-
-  .pdp-media {
-    min-height: 220px;
-    height: clamp(220px, 55vw, 290px);
-    max-height: 290px;
-  }
-
-  .pdp-title {
-    font-size: clamp(1.45rem, 6vw, 1.85rem);
   }
 
   .pincode-input-group {
