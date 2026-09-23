@@ -173,10 +173,10 @@ const CANDLE_INVENTORY = [
     },
     image: "asset/Ribbed Glow Pillar – White.jpg",
     images: [
-      "asset/Ribbed Glow Pillar – Amber.jpg",
-      "asset/Ribbed Glow Pillar – Amber_2.jpg",
-      "asset/Ribbed Glow Pillar – Amber_3.jpg",
-      "asset/Ribbed Glow Pillar – Amber_4.jpg"
+      "asset/Ribbed Glow Pillar – White.jpg",
+      "asset/Ribbed Glow Pillar – White_2.jpg",
+      "asset/Ribbed Glow Pillar – Red.jpg",
+      "asset/Ribbed Glow Pillar – Red_2.jpg"
     ],
     desc: "Sculptural ribbed architectural pillar candle hand-poured with botanical soy wax. Features elegant fluted geometry that catches candlelight in cascading ridges.",
     dimensions: "7.5 × 7.5 × 12 cm (280g)",
@@ -193,22 +193,16 @@ const CANDLE_INVENTORY = [
         available: true,
         stock: 11,
         badge: "NEW ARRIVAL",
-        // available: false,
-        // isOutOfStock: true,
-        // stock: 0,
-        // badge: "OUT OF STOCK",
         notes: {
           top: "Pure Cotton Flower & White Lily",
           heart: "French Vanilla & Cashmere",
           base: "Clean Sandalwood & Amber"
         },
-        desc: "Ribbed Glow Pillar in Pure White showcases tactile architectural fluting (Currently Out of Stock).",
+        desc: "Ribbed Glow Pillar in Pure White showcases tactile architectural fluting.",
         image: "asset/Ribbed Glow Pillar – White.jpg",
         images: [
           "asset/Ribbed Glow Pillar – White.jpg",
-          "asset/Ribbed Glow Pillar – White_2.jpg",
-          "asset/Ribbed Glow Pillar – White_3.jpg",
-          "asset/Ribbed Glow Pillar – White_4.jpg"
+          "asset/Ribbed Glow Pillar – White_2.jpg"
         ]
       },
       {
@@ -227,13 +221,11 @@ const CANDLE_INVENTORY = [
           heart: "Spiced Rose & Cinnamon Bark",
           base: "Velvet Amber & Cedarwood"
         },
-        desc: "Ribbed Glow Pillar in Crimson Red brings festive warmth (Currently Out of Stock).",
+        desc: "Ribbed Glow Pillar in Crimson Red brings festive warmth.",
         image: "asset/Ribbed Glow Pillar – Red.jpg",
         images: [
           "asset/Ribbed Glow Pillar – Red.jpg",
-          "asset/Ribbed Glow Pillar – Red_2.jpg",
-          "asset/Ribbed Glow Pillar – Red_3.jpg",
-          "asset/Ribbed Glow Pillar – Red_4.jpg"
+          "asset/Ribbed Glow Pillar – Red_2.jpg"
         ]
       },
       {
@@ -1396,10 +1388,7 @@ const CANDLE_INVENTORY = [
     },
     image: "asset/Seven Chakra Candles- Amethyst and tiger.jpg",
     images: [
-      "asset/Seven Chakra Candles- Amethyst and tiger.jpg",
-      "asset/Seven Chakra Candles- Amethyst and tiger_2.jpg",
-      "asset/Seven Chakra Candles- Amethyst and tiger_3.jpg",
-      "asset/Seven Chakra Candles- Amethyst and tiger_4.jpg"
+      "asset/Seven Chakra Candles- Amethyst and tiger.jpg"
     ],
     desc: "Holistic positivity candle embedded with genuine raw Amethyst and Tiger's Eye crystals. Crafted to harmonize energy centers, deepen meditation, and promote serenity.",
     dimensions: "9 × 9 × 8 cm (300g)",
