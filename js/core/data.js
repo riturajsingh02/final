@@ -458,136 +458,136 @@ const CANDLE_INVENTORY = [
   },
 
   // 5. CLASSIC TAPER CANDLES - SET OF 2 (Variants: Red, Amber, White, Black)
-  {
-    id: 60,
-    handle: "classic-taper-candles",
-    title: "Classic Taper Candles – Set of 2",
-    category: "Premium Luxury Candles",
-    variantType: "color",
-    variantTypeLabel: "Candle Color",
-    price: 189,
-    origPrice: 249,
-    burn: "10-12 Hours Each",
-    badge: "HAND-DIPPED",
-    isComingSoon: false,
-    notes: {
-      top: "Pure Unscented / Clean Botanical",
-      heart: "Hypoallergenic Pure Cotton Wick",
-      base: "100% Dripless Clean Soy Wax"
-    },
-    image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
-    images: [
-      "asset/Classic Taper Candles – Red – Set of 2.jpg",
-      "asset/Classic Taper Candles – Red – Set of 2_2.jpg",
-      "asset/Classic Taper Candles – Red – Set of 2_3.jpg",
-      "asset/Classic Taper Candles – Red – Set of 2_4.jpg"
-    ],
-    desc: "Hand-dipped artisanal dinner tapers designed to burn cleanly and evenly without soot. Fits standard taper candle holders and candelabras.",
-    dimensions: "2.2 cm ⌀ × 25 cm Height (Pair of 2)",
-    stock: 40,
-    variants: [
-      {
-        id: "taper-red-set-2",
-        title: "Red – Set of 2",
-        colorHex: "#991b1b",
-        price: 189,
-        origPrice: 249,
-        burn: "10-12 Hours Each",
-        dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
-        available: true,
-        stock: 10,
-        badge: "HAND-DIPPED",
-        notes: {
-          top: "Pure Unscented / Clean Botanical",
-          heart: "Hypoallergenic Pure Cotton Wick",
-          base: "100% Dripless Clean Soy Wax"
-        },
-        desc: "Classic Taper Candles in Crimson Velvet Red bring majestic warmth and festive luxury to dinner settings.",
-        image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
-        images: [
-          "asset/Classic Taper Candles – Red – Set of 2.jpg",
-          "asset/Classic Taper Candles – Red – Set of 2_2.jpg",
-          "asset/Classic Taper Candles – Red – Set of 2_3.jpg",
-          "asset/Classic Taper Candles – Red – Set of 2_4.jpg"
-        ]
-      },
-      {
-        id: "taper-amber-set-2",
-        title: "Amber – Set of 2",
-        colorHex: "#d97706",
-        price: 189,
-        origPrice: 249,
-        burn: "10-12 Hours Each",
-        dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
-        available: true,
-        stock: 10,
-        badge: "NEW ARRIVAL",
-        notes: {
-          top: "Pure Unscented / Clean Botanical",
-          heart: "Hypoallergenic Pure Cotton Wick",
-          base: "100% Dripless Clean Soy Wax"
-        },
-        desc: "Classic Taper Candles in Golden Honey Amber cast a rich, flattering golden glow for intimate evenings.",
-        image: "asset/Classic Taper Candles – Amber – Set of 2.jpg",
-        images: [
-          "asset/Classic Taper Candles – Amber – Set of 2.jpg",
-          "asset/Classic Taper Candles – Amber – Set of 2_2.jpg",
-          "asset/Classic Taper Candles – Amber – Set of 2_3.jpg",
-          "asset/Classic Taper Candles – Amber – Set of 2_4.jpg"
-        ]
-      },
-      {
-        id: "taper-white-set-2",
-        title: "White – Set of 2",
-        colorHex: "#f8fafc",
-        price: 189,
-        origPrice: 249,
-        burn: "10-12 Hours Each",
-        dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
-        available: true,
-        stock: 10,
-        badge: "BESTSELLER",
-        notes: {
-          top: "Pure Unscented / Clean Botanical",
-          heart: "Hypoallergenic Pure Cotton Wick",
-          base: "100% Dripless Clean Soy Wax"
-        },
-        desc: "Classic Taper Candles in Pure Ivory White offer timeless minimalist elegance for weddings and fine dining.",
-        image: "asset/Classic Taper Candles – White – Set of 2.jpg",
-        images: [
-          "asset/Classic Taper Candles – White – Set of 2.jpg",
-          "asset/Classic Taper Candles – White – Set of 2_2.jpg",
-          "asset/Classic Taper Candles – White – Set of 2_3.jpg",
-          "asset/Classic Taper Candles – White – Set of 2_4.jpg"
-        ]
-      },
-      {
-        id: "taper-black-set-2",
-        title: "Black – Set of 2",
-        colorHex: "#1c1917",
-        price: 189,
-        origPrice: 249,
-        burn: "10-12 Hours Each",
-        dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
-        available: true,
-        stock: 10,
-        badge: "MODERN CLASSIC",
-        notes: {
-          top: "Pure Unscented / Clean Botanical",
-          heart: "Hypoallergenic Pure Cotton Wick",
-          base: "100% Dripless Clean Soy Wax"
-        },
-        desc: "Classic Taper Candles in Midnight Black provide bold, sophisticated architectural contrast in brass or glass holders.",
-        image: "asset/Classic Taper Candles – Black – Set of 2.jpg",
-        images: [
-          "asset/Classic Taper Candles – Black – Set of 2.jpg",
-          "asset/Classic Taper Candles – Black – Set of 2_2.jpg",
-          "asset/Classic Taper Candles – Black – Set of 2_3.jpg",
-          "asset/Classic Taper Candles – Black – Set of 2_4.jpg"
-        ]
-      }
-    ]
-  },
+  // {
+  //   id: 60,
+  //   handle: "classic-taper-candles",
+  //   title: "Classic Taper Candles – Set of 2",
+  //   category: "Premium Luxury Candles",
+  //   variantType: "color",
+  //   variantTypeLabel: "Candle Color",
+  //   price: 189,
+  //   origPrice: 249,
+  //   burn: "10-12 Hours Each",
+  //   badge: "HAND-DIPPED",
+  //   isComingSoon: false,
+  //   notes: {
+  //     top: "Pure Unscented / Clean Botanical",
+  //     heart: "Hypoallergenic Pure Cotton Wick",
+  //     base: "100% Dripless Clean Soy Wax"
+  //   },
+  //   image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
+  //   images: [
+  //     "asset/Classic Taper Candles – Red – Set of 2.jpg",
+  //     "asset/Classic Taper Candles – Red – Set of 2_2.jpg",
+  //     "asset/Classic Taper Candles – Red – Set of 2_3.jpg",
+  //     "asset/Classic Taper Candles – Red – Set of 2_4.jpg"
+  //   ],
+  //   desc: "Hand-dipped artisanal dinner tapers designed to burn cleanly and evenly without soot. Fits standard taper candle holders and candelabras.",
+  //   dimensions: "2.2 cm ⌀ × 25 cm Height (Pair of 2)",
+  //   stock: 40,
+  //   variants: [
+  //     {
+  //       id: "taper-red-set-2",
+  //       title: "Red – Set of 2",
+  //       colorHex: "#991b1b",
+  //       price: 189,
+  //       origPrice: 249,
+  //       burn: "10-12 Hours Each",
+  //       dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
+  //       available: true,
+  //       stock: 10,
+  //       badge: "HAND-DIPPED",
+  //       notes: {
+  //         top: "Pure Unscented / Clean Botanical",
+  //         heart: "Hypoallergenic Pure Cotton Wick",
+  //         base: "100% Dripless Clean Soy Wax"
+  //       },
+  //       desc: "Classic Taper Candles in Crimson Velvet Red bring majestic warmth and festive luxury to dinner settings.",
+  //       image: "asset/Classic Taper Candles – Red – Set of 2.jpg",
+  //       images: [
+  //         "asset/Classic Taper Candles – Red – Set of 2.jpg",
+  //         "asset/Classic Taper Candles – Red – Set of 2_2.jpg",
+  //         "asset/Classic Taper Candles – Red – Set of 2_3.jpg",
+  //         "asset/Classic Taper Candles – Red – Set of 2_4.jpg"
+  //       ]
+  //     },
+  //     {
+  //       id: "taper-amber-set-2",
+  //       title: "Amber – Set of 2",
+  //       colorHex: "#d97706",
+  //       price: 189,
+  //       origPrice: 249,
+  //       burn: "10-12 Hours Each",
+  //       dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
+  //       available: true,
+  //       stock: 10,
+  //       badge: "NEW ARRIVAL",
+  //       notes: {
+  //         top: "Pure Unscented / Clean Botanical",
+  //         heart: "Hypoallergenic Pure Cotton Wick",
+  //         base: "100% Dripless Clean Soy Wax"
+  //       },
+  //       desc: "Classic Taper Candles in Golden Honey Amber cast a rich, flattering golden glow for intimate evenings.",
+  //       image: "asset/Classic Taper Candles – Amber – Set of 2.jpg",
+  //       images: [
+  //         "asset/Classic Taper Candles – Amber – Set of 2.jpg",
+  //         "asset/Classic Taper Candles – Amber – Set of 2_2.jpg",
+  //         "asset/Classic Taper Candles – Amber – Set of 2_3.jpg",
+  //         "asset/Classic Taper Candles – Amber – Set of 2_4.jpg"
+  //       ]
+  //     },
+  //     {
+  //       id: "taper-white-set-2",
+  //       title: "White – Set of 2",
+  //       colorHex: "#f8fafc",
+  //       price: 189,
+  //       origPrice: 249,
+  //       burn: "10-12 Hours Each",
+  //       dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
+  //       available: true,
+  //       stock: 10,
+  //       badge: "BESTSELLER",
+  //       notes: {
+  //         top: "Pure Unscented / Clean Botanical",
+  //         heart: "Hypoallergenic Pure Cotton Wick",
+  //         base: "100% Dripless Clean Soy Wax"
+  //       },
+  //       desc: "Classic Taper Candles in Pure Ivory White offer timeless minimalist elegance for weddings and fine dining.",
+  //       image: "asset/Classic Taper Candles – White – Set of 2.jpg",
+  //       images: [
+  //         "asset/Classic Taper Candles – White – Set of 2.jpg",
+  //         "asset/Classic Taper Candles – White – Set of 2_2.jpg",
+  //         "asset/Classic Taper Candles – White – Set of 2_3.jpg",
+  //         "asset/Classic Taper Candles – White – Set of 2_4.jpg"
+  //       ]
+  //     },
+  //     {
+  //       id: "taper-black-set-2",
+  //       title: "Black – Set of 2",
+  //       colorHex: "#1c1917",
+  //       price: 189,
+  //       origPrice: 249,
+  //       burn: "10-12 Hours Each",
+  //       dimensions: "2.2 cm ⌀ × 25 cm (Set of 2)",
+  //       available: true,
+  //       stock: 10,
+  //       badge: "MODERN CLASSIC",
+  //       notes: {
+  //         top: "Pure Unscented / Clean Botanical",
+  //         heart: "Hypoallergenic Pure Cotton Wick",
+  //         base: "100% Dripless Clean Soy Wax"
+  //       },
+  //       desc: "Classic Taper Candles in Midnight Black provide bold, sophisticated architectural contrast in brass or glass holders.",
+  //       image: "asset/Classic Taper Candles – Black – Set of 2.jpg",
+  //       images: [
+  //         "asset/Classic Taper Candles – Black – Set of 2.jpg",
+  //         "asset/Classic Taper Candles – Black – Set of 2_2.jpg",
+  //         "asset/Classic Taper Candles – Black – Set of 2_3.jpg",
+  //         "asset/Classic Taper Candles – Black – Set of 2_4.jpg"
+  //       ]
+  //     }
+  //   ]
+  // },
 
   // 6. GRAND PILLAR – 12" (Variants: White in stock; Black, Red, Amber Out of Stock)
   {
