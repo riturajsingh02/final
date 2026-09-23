@@ -484,7 +484,7 @@
     }
   }
 
-  // 4. Google OAuth Sign-In & Sign-Up Engine
+  // 4. Production Google OAuth Sign-In & Sign-Up Engine
   async function getAuthConfig() {
     try {
       const resp = await fetch('/api/auth/config');
@@ -497,101 +497,126 @@
   }
 
   async function processGoogleAuthToken(idToken, btn) {
+    const originalContent = btn ? btn.innerHTML : '';
     try {
       if (btn) {
         btn.disabled = true;
+        btn.classList.add('is-loading');
         btn.innerHTML = '<span>Verifying with Google...</span>';
       }
 
-      const user = await window.ShopifyService.googleLogin(idToken);
+      const user = await window.ShopifyService.googleLogin({ idToken });
       if (user) {
         const redirectTarget = getRedirectParam('account.html');
         window.location.replace(redirectTarget);
         return;
       }
     } catch (err) {
-      alert(err.message || 'Google authentication failed. Please try again.');
-    } finally {
+      const form = btn?.closest('form') || document.querySelector('form');
+      if (form) {
+        showErrorBanner(form, err.message || 'Google authentication failed. Please try again.');
+      } else {
+        alert(err.message || 'Google authentication failed.');
+      }
       if (btn) {
         btn.disabled = false;
-        btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.27 21.37 7.35 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.94 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.63 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg> <span>Continue with Google</span>`;
+        btn.classList.remove('is-loading');
+        btn.innerHTML = originalContent;
       }
     }
   }
 
-  function showGoogleAccountModal(btn) {
-    const existingModal = document.getElementById('candleierGoogleModal');
-    if (existingModal) existingModal.remove();
+  async function processGoogleAuthCode(code, redirectUri, btn) {
+    const originalContent = btn ? btn.innerHTML : '';
+    try {
+      if (btn) {
+        btn.disabled = true;
+        btn.classList.add('is-loading');
+        btn.innerHTML = '<span>Authenticating with Google...</span>';
+      }
 
-    const modal = document.createElement('div');
-    modal.id = 'candleierGoogleModal';
-    modal.style.cssText = `
-      position: fixed; inset: 0; background: rgba(18,17,16,0.65);
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-      z-index: 99999; display: flex; align-items: center; justify-content: center;
-      padding: 1rem; animation: fadeIn 0.25s ease;
-    `;
+      const user = await window.ShopifyService.googleLogin({ code, redirectUri });
+      if (user) {
+        const redirectTarget = getRedirectParam('account.html');
+        window.location.replace(redirectTarget);
+        return;
+      }
+    } catch (err) {
+      const form = btn?.closest('form') || document.querySelector('form');
+      if (form) {
+        showErrorBanner(form, err.message || 'Google sign-in failed. Please try again.');
+      } else {
+        alert(err.message || 'Google sign-in failed.');
+      }
+      if (btn) {
+        btn.disabled = false;
+        btn.classList.remove('is-loading');
+        btn.innerHTML = originalContent;
+      }
+    }
+  }
 
-    modal.innerHTML = `
-      <div style="background: #ffffff; border-radius: 16px; width: 100%; max-width: 420px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); border: 1px solid rgba(212,175,55,0.25); overflow: hidden; font-family: 'Montserrat', sans-serif;">
-        <div style="padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid #f3f4f6; display: flex; align-items: center; justify-content: space-between;">
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <svg width="24" height="24" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.27 21.37 7.35 24 12 24z"/><path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.94 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.63 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/></svg>
-            <span style="font-weight: 600; font-size: 0.95rem; color: #1f2937;">Sign in with Google</span>
-          </div>
-          <button id="closeGModalBtn" style="background: none; border: none; font-size: 1.5rem; line-height: 1; cursor: pointer; color: #9ca3af;">&times;</button>
-        </div>
-        <div style="padding: 1.5rem;">
-          <p style="font-size: 0.85rem; color: #4b5563; margin-bottom: 1.25rem; line-height: 1.5;">
-            Choose a Google account to continue to <strong>The Candleier</strong>.
-          </p>
+  function openGoogleOAuthPopup(authUrl, btn) {
+    const width = 500;
+    const height = 600;
+    const left = window.screenX + (window.outerWidth - width) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2;
+    const popup = window.open(
+      authUrl,
+      'google_oauth_popup',
+      `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,status=no`
+    );
 
-          <!-- Verified Account Option -->
-          <button id="selectMainGoogleAccount" style="width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseover="this.style.background='#f3f4f6'; this.style.borderColor='#d4af37';" onmouseout="this.style.background='#f9fafb'; this.style.borderColor='#e5e7eb';">
-            <div style="width: 42px; height: 42px; border-radius: 50%; background: #d4af37; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1rem; flex-shrink: 0;">
-              R
-            </div>
-            <div style="flex: 1; overflow: hidden;">
-              <div style="font-weight: 600; font-size: 0.95rem; color: #111827;">Rituraj Singh</div>
-              <div style="font-size: 0.825rem; color: #6b7280; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">riturajsinghrana153@gmail.com</div>
-            </div>
-            <span style="color: #d4af37; font-size: 1.25rem;">→</span>
-          </button>
-        </div>
-      </div>
-    `;
+    if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+      // If popup blocked, redirect directly
+      window.location.href = authUrl;
+      return;
+    }
 
-    document.body.appendChild(modal);
-
-    document.getElementById('closeGModalBtn').addEventListener('click', () => modal.remove());
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) modal.remove();
-    });
-
-    const triggerAuth = (email, name) => {
-      modal.remove();
-      const first = name.split(' ')[0] || 'Client';
-      const last = name.split(' ').slice(1).join(' ') || '';
-      const mockPayload = {
-        sub: 'g_' + Math.random().toString(36).substring(2, 10),
-        email: email,
-        email_verified: true,
-        given_name: first,
-        family_name: last,
-        name: name
-      };
-      const token = 'g_sim_.' + btoa(JSON.stringify(mockPayload)) + '.mock_sig';
-      processGoogleAuthToken(token, btn);
-    };
-
-    document.getElementById('selectMainGoogleAccount').addEventListener('click', () => {
-      triggerAuth('riturajsinghrana153@gmail.com', 'Rituraj Singh');
-    });
+    if (btn) {
+      btn.disabled = true;
+      btn.classList.add('is-loading');
+      btn.innerHTML = '<span>Connecting to Google...</span>';
+    }
   }
 
   async function initGoogleOAuth() {
     const config = await getAuthConfig();
     const googleBtns = document.querySelectorAll('.google-signin-btn, #googleAuthBtn');
+
+    // Listen for postMessage from Google OAuth popup callback
+    window.addEventListener('message', async (event) => {
+      if (event.data && event.data.type === 'GOOGLE_AUTH_SUCCESS') {
+        const data = event.data;
+        if (data.token) {
+          window.ShopifyService.setSession(data.token, data.expiresAt, true);
+        }
+        if (data.customer) {
+          localStorage.setItem('thecandleier_cust_profile', JSON.stringify(data.customer));
+          sessionStorage.setItem('thecandleier_cust_profile', JSON.stringify(data.customer));
+        }
+        const redirectTarget = getRedirectParam('account.html');
+        window.location.replace(redirectTarget);
+      } else if (event.data && event.data.type === 'GOOGLE_AUTH_ERROR') {
+        const form = document.querySelector('form');
+        if (form) {
+          showErrorBanner(form, event.data.error || 'Google authentication was not completed.');
+        }
+        googleBtns.forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('is-loading');
+          btn.innerHTML = `
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Continue with Google</span>
+          `;
+        });
+      }
+    });
 
     // If real Google Client ID is configured and Google GSI is loaded
     if (config.googleClientId && window.google?.accounts?.id) {
@@ -600,9 +625,12 @@
           client_id: config.googleClientId,
           callback: (response) => {
             if (response.credential) {
-              processGoogleAuthToken(response.credential);
+              const activeBtn = document.querySelector('.google-signin-btn:focus, #googleAuthBtn');
+              processGoogleAuthToken(response.credential, activeBtn);
             }
-          }
+          },
+          auto_select: false,
+          cancel_on_tap_outside: true
         });
       } catch (e) {
         console.warn('Google Identity initialization notice:', e);
@@ -613,16 +641,71 @@
       btn.addEventListener('click', async (e) => {
         e.preventDefault();
 
-        // If GSI Client ID is loaded and ready
-        if (config.googleClientId && window.google?.accounts?.id) {
+        // 1. If Google Client ID is present
+        if (config.googleClientId) {
+          // If Google Identity OAuth2 Code Client is available
+          if (window.google?.accounts?.oauth2) {
+            try {
+              const client = window.google.accounts.oauth2.initCodeClient({
+                client_id: config.googleClientId,
+                scope: 'openid email profile',
+                ux_mode: 'popup',
+                callback: async (response) => {
+                  if (response.code) {
+                    await processGoogleAuthCode(response.code, window.location.origin, btn);
+                  }
+                }
+              });
+              client.requestCode();
+              return;
+            } catch (err) {
+              console.warn('OAuth code client popup failed, attempting standard popup flow:', err);
+            }
+          }
+
+          // If Google One Tap / GSI Prompt is available
+          if (window.google?.accounts?.id) {
+            try {
+              window.google.accounts.id.prompt((notification) => {
+                if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+                  // Fallback to direct backend OAuth URL
+                  fetch('/api/auth/google/url')
+                    .then(r => r.json())
+                    .then(data => {
+                      if (data.data?.url) {
+                        openGoogleOAuthPopup(data.data.url, btn);
+                      }
+                    })
+                    .catch(() => {});
+                }
+              });
+              return;
+            } catch (e) {}
+          }
+
+          // Fallback to server-side Google OAuth URL
           try {
-            window.google.accounts.id.prompt();
-            return;
+            const resp = await fetch('/api/auth/google/url');
+            if (resp.ok) {
+              const data = await resp.json();
+              if (data.data?.url) {
+                openGoogleOAuthPopup(data.data.url, btn);
+                return;
+              }
+            }
           } catch (e) {}
         }
 
-        // Seamless interactive Google Auth
-        showGoogleAccountModal(btn);
+        // If Google Client ID is not yet configured in environment variables
+        const form = btn.closest('form') || document.querySelector('form');
+        if (form) {
+          showErrorBanner(
+            form,
+            'Google Sign-In is ready on the backend. Please provide <strong>GOOGLE_CLIENT_ID</strong> in your environment configuration to connect with Google, or sign in using your email and password.'
+          );
+        } else {
+          alert('Google Sign-In requires GOOGLE_CLIENT_ID to be set in your environment variables.');
+        }
       });
     });
   }
