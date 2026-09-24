@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thecandlorre.com/sitemap.xml
+Sitemap: https://theCandlorre.com/sitemap.xml
