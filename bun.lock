@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "the-candleier",
+      "name": "the-Candlorre",
       "dependencies": {
         "bcryptjs": "^3.0.3",
         "cookie-parser": "^1.4.7",
