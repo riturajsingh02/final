@@ -51,7 +51,7 @@ app.use(errorHandler);
 // Listen only when executed directly (not when imported as a Vercel serverless function)
 if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`The Candleier server active at http://0.0.0.0:${PORT}`);
+    console.log(`The Candlorre server active at http://0.0.0.0:${PORT}`);
   });
 }
 
