@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import apiRouter from './backend/api/index.js';
 import { errorHandler } from './backend/utils/errors.js';
 import config from './backend/config/env.js';
+import { scheduler } from './backend/services/scheduler.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -34,6 +35,11 @@ app.get('/robots.txt', (req, res) => {
   res.sendFile(path.join(__dirname, 'robots.txt'));
 });
 
+// Direct admin portal route
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'admin.html'));
+});
+
 // Mount modular Backend API routes under /api
 app.use('/api', apiRouter);
 
@@ -48,10 +54,12 @@ app.get('/', (req, res) => {
 // Global Error Handler
 app.use(errorHandler);
 
-// Listen only when executed directly (not when imported as a Vercel serverless function)
+// Listen only when executed directly
 if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`The Candlorre server active at http://0.0.0.0:${PORT}`);
+    // Start automated scheduler for stock checks, daily reports, and email retries
+    scheduler.start();
   });
 }
 
