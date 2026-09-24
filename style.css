@@ -4372,7 +4372,7 @@ body.drawer-open {
   }
 }
 /* =========================================================
-   CANDLEIER RESPONSIVE SYSTEM — FINAL OVERRIDES
+   Candlorre RESPONSIVE SYSTEM — FINAL OVERRIDES
    Designed for 320px phones → large desktop / 4K
    Keeps the existing visual design and only fixes sizing/layout.
    ========================================================= */
@@ -8581,7 +8581,7 @@ select {
 }
 
 /* =========================================================
-   THE CANDLEIER — CUSTOMER ACCOUNT & ORDER MANAGEMENT SYSTEM
+   THE Candlorre — CUSTOMER ACCOUNT & ORDER MANAGEMENT SYSTEM
    ========================================================= */
 
 /* Header Authentication & Dropdown */
@@ -9679,7 +9679,7 @@ select {
 }
 
 /* Universal Custom Modal (Accessible) */
-.candleier-modal-overlay {
+.Candlorre-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(43, 5, 11, 0.65);
@@ -9694,12 +9694,12 @@ select {
   padding: 1.5rem;
 }
 
-.candleier-modal-overlay.active {
+.Candlorre-modal-overlay.active {
   opacity: 1;
   visibility: visible;
 }
 
-.candleier-modal-box {
+.Candlorre-modal-box {
   background: #FFFFFF;
   border: 1px solid var(--border-subtle);
   border-radius: 6px;
@@ -9714,7 +9714,7 @@ select {
   flex-direction: column;
 }
 
-.candleier-modal-overlay.active .candleier-modal-box {
+.Candlorre-modal-overlay.active .Candlorre-modal-box {
   transform: translateY(0);
 }
 
@@ -9844,13 +9844,13 @@ select {
 }
 
 /* =========================================================
-   THE CANDLEIER — PREMIUM ADDRESS SYSTEM & MODAL ARCHITECTURE
+   THE Candlorre — PREMIUM ADDRESS SYSTEM & MODAL ARCHITECTURE
    Luxury E-Commerce Addresses, Location Detection, & Validation
    ========================================================= */
 
 /* Universal Modal Overlay Support */
 .modal-overlay,
-.candleier-modal-overlay {
+.Candlorre-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(43, 5, 11, 0.72);
@@ -9870,7 +9870,7 @@ select {
 }
 
 .modal-overlay.active,
-.candleier-modal-overlay.active {
+.Candlorre-modal-overlay.active {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -9878,7 +9878,7 @@ select {
 
 /* Modal Card / Dialog Box */
 .modal-card,
-.candleier-modal-box {
+.Candlorre-modal-box {
   background: #FFFFFF;
   border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 6px;
@@ -9895,12 +9895,12 @@ select {
 }
 
 .modal-overlay.active .modal-card,
-.candleier-modal-overlay.active .candleier-modal-box {
+.Candlorre-modal-overlay.active .Candlorre-modal-box {
   transform: translateY(0) scale(1);
 }
 
 .modal-card .modal-header,
-.candleier-modal-box .modal-header-bar {
+.Candlorre-modal-box .modal-header-bar {
   padding: 1.35rem 1.75rem;
   border-bottom: 1px solid var(--border-subtle);
   background: #FAF8F4;
@@ -9950,7 +9950,7 @@ select {
 
 /* Modal Form Container - Crucial for Scrollability */
 .modal-card form,
-.candleier-modal-box form,
+.Candlorre-modal-box form,
 #addressForm {
   display: flex;
   flex-direction: column;
@@ -10011,7 +10011,7 @@ select {
 
 @media (max-height: 700px) {
   .modal-overlay,
-  .candleier-modal-overlay {
+  .Candlorre-modal-overlay {
     align-items: flex-start;
     padding: 0.75rem;
   }
@@ -10678,32 +10678,32 @@ select {
 }
 
 /* Loading Spinners & Indicators */
-@keyframes candleierSpin {
+@keyframes CandlorreSpin {
   to { transform: rotate(360deg); }
 }
 
 .spin-icon {
-  animation: candleierSpin 1s linear infinite;
+  animation: CandlorreSpin 1s linear infinite;
   display: inline-block;
 }
 
 /* Mobile Responsive Optimizations for Addresses */
 @media (max-width: 680px) {
   .modal-overlay,
-  .candleier-modal-overlay {
+  .Candlorre-modal-overlay {
     padding: 0.75rem;
     align-items: flex-end;
   }
 
   .modal-card,
-  .candleier-modal-box {
+  .Candlorre-modal-box {
     max-height: 94vh;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
   .modal-card .modal-header,
-  .candleier-modal-box .modal-header-bar {
+  .Candlorre-modal-box .modal-header-bar {
     padding: 1.1rem 1.25rem;
   }
 
