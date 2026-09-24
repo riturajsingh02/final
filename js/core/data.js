@@ -49,6 +49,41 @@ const Candlorre_CONFIG = {
       })
       .catch(() => {});
   }
+
+  // Real-time stock synchronization with backend alerts & snapshots
+  if (typeof fetch === 'function') {
+    fetch('/api/inventory-status')
+      .then(res => res.ok ? res.json() : null)
+      .then(json => {
+        if (json && json.data && json.data.inventory && Array.isArray(window.CANDLE_INVENTORY)) {
+          const invMap = json.data.inventory;
+          window.CANDLE_INVENTORY.forEach(prod => {
+            let prodStock = 0;
+            if (Array.isArray(prod.variants)) {
+              prod.variants.forEach(v => {
+                const match = Object.values(invMap).find(s => 
+                  s.variantId === v.id || 
+                  (s.sku && v.sku && s.sku === v.sku) ||
+                  (s.variantTitle && v.title && s.variantTitle.toLowerCase() === v.title.toLowerCase() && s.productId === String(prod.id))
+                );
+                if (match) {
+                  v.stock = match.quantity;
+                  v.available = match.available;
+                  v.isOutOfStock = match.isOutOfStock;
+                  v.isCritical = match.isCritical;
+                  v.isLowStock = match.isLowStock;
+                }
+                prodStock += (v.stock || 0);
+              });
+              if (prod.variants.length > 0) {
+                prod.stock = prodStock;
+              }
+            }
+          });
+        }
+      })
+      .catch(() => {});
+  }
 })();
 
 /* =========================================================
