@@ -237,6 +237,10 @@
         <span>Seven Chakra</span>
         <span class="pill-count">(1)</span>
       </button>
+      <button type="button" class="km-pill" data-category-filter="Candle Accessories" onclick="setCollectionPill('Candle Accessories')">
+        <span>Candle Accessories</span>
+        <span class="pill-count">(2)</span>
+      </button>
     </div>
   </section>
 
@@ -362,6 +366,13 @@
               <span>Seven Chakra</span>
             </span>
             <span class="km-filter-count-tag">1</span>
+          </label>
+          <label class="km-filter-checkbox-label">
+            <span class="label-text">
+              <input type="checkbox" class="type-filter" value="Candle Accessories" onchange="filterProducts()" />
+              <span>Candle Accessories</span>
+            </span>
+            <span class="km-filter-count-tag">2</span>
           </label>
         </div>
       </div>
@@ -495,6 +506,12 @@
             <span class="label-text">
               <input type="checkbox" class="format-filter" value="hamper" onchange="filterProducts()" />
               <span>Gift Hampers &amp; Sets</span>
+            </span>
+          </label>
+          <label class="km-filter-checkbox-label">
+            <span class="label-text">
+              <input type="checkbox" class="format-filter" value="accessories" onchange="filterProducts()" />
+              <span>Candle Accessories &amp; Tools</span>
             </span>
           </label>
         </div>
