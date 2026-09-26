@@ -3,8 +3,14 @@
  * Core GraphQL communicator for Shopify Storefront API
  */
 
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { config } from '../config/env.js';
 import { ShopifyError } from '../utils/errors.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export class ShopifyService {
   /**
@@ -57,152 +63,207 @@ export class ShopifyService {
   }
 
   /**
+   * Helper to load local catalog fallback
+   */
+  static getFallbackProducts() {
+    try {
+      const p = path.join(__dirname, '..', 'data', 'products.json');
+      if (fs.existsSync(p)) {
+        return JSON.parse(fs.readFileSync(p, 'utf8'));
+      }
+    } catch (e) {
+      console.warn('[ShopifyService] Error reading products fallback:', e.message);
+    }
+    return [];
+  }
+
+  /**
    * Fetch live products from Shopify
    */
   static async getProducts({ first = 50, query = '', sortKey = 'BEST_SELLING', reverse = false } = {}) {
-    const gql = `
-      query getProducts($first: Int!, $query: String, $sortKey: ProductSortKeys, $reverse: Boolean) {
-        products(first: $first, query: $query, sortKey: $sortKey, reverse: $reverse) {
-          edges {
-            node {
-              id
-              title
-              handle
-              description
-              availableForSale
-              productType
-              tags
-              metafields(identifiers: [
-                { namespace: "custom", key: "burn_time" },
-                { namespace: "custom", key: "fragrance_notes" },
-                { namespace: "custom", key: "wax_type" },
-                { namespace: "custom", key: "dimensions" }
-              ]) {
-                key
-                value
-              }
-              variants(first: 10) {
-                edges {
-                  node {
-                    id
-                    title
-                    availableForSale
-                    quantityAvailable
-                    priceV2 {
-                      amount
-                      currencyCode
+    try {
+      const gql = `
+        query getProducts($first: Int!, $query: String, $sortKey: ProductSortKeys, $reverse: Boolean) {
+          products(first: $first, query: $query, sortKey: $sortKey, reverse: $reverse) {
+            edges {
+              node {
+                id
+                title
+                handle
+                description
+                availableForSale
+                productType
+                tags
+                metafields(identifiers: [
+                  { namespace: "custom", key: "burn_time" },
+                  { namespace: "custom", key: "fragrance_notes" },
+                  { namespace: "custom", key: "wax_type" },
+                  { namespace: "custom", key: "dimensions" }
+                ]) {
+                  key
+                  value
+                }
+                variants(first: 10) {
+                  edges {
+                    node {
+                      id
+                      title
+                      availableForSale
+                      quantityAvailable
+                      priceV2 {
+                        amount
+                        currencyCode
+                      }
+                      compareAtPriceV2 {
+                        amount
+                        currencyCode
+                      }
+                      sku
                     }
-                    compareAtPriceV2 {
-                      amount
-                      currencyCode
-                    }
-                    sku
                   }
                 }
-              }
-              images(first: 6) {
-                edges {
-                  node {
-                    url
-                    altText
+                images(first: 6) {
+                  edges {
+                    node {
+                      url
+                      altText
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
-    `;
+      `;
 
-    const data = await this.request(gql, { first, query: query || null, sortKey, reverse });
-    return (data?.products?.edges || []).map(edge => this.formatProduct(edge.node));
+      const data = await this.request(gql, { first, query: query || null, sortKey, reverse });
+      return (data?.products?.edges || []).map(edge => this.formatProduct(edge.node));
+    } catch (err) {
+      console.warn(`[ShopifyService] Live Shopify unreachable (${err.message}). Using local catalog fallback.`);
+      let products = this.getFallbackProducts();
+      if (query) {
+        const cleanQ = query.toLowerCase();
+        products = products.filter(p =>
+          (p.title || '').toLowerCase().includes(cleanQ) ||
+          (p.desc || '').toLowerCase().includes(cleanQ) ||
+          (p.category || '').toLowerCase().includes(cleanQ) ||
+          (p.notes?.top || '').toLowerCase().includes(cleanQ) ||
+          (p.notes?.heart || '').toLowerCase().includes(cleanQ) ||
+          (p.notes?.base || '').toLowerCase().includes(cleanQ) ||
+          (Array.isArray(p.variants) && p.variants.some(v => (v.title || '').toLowerCase().includes(cleanQ)))
+        );
+      }
+      return products.slice(0, first);
+    }
   }
 
   /**
    * Fetch single product by handle
    */
   static async getProductByHandle(handle) {
-    const gql = `
-      query getProductByHandle($handle: String!) {
-        product(handle: $handle) {
-          id
-          title
-          handle
-          description
-          descriptionHtml
-          availableForSale
-          productType
-          tags
-          metafields(identifiers: [
-            { namespace: "custom", key: "burn_time" },
-            { namespace: "custom", key: "fragrance_notes" },
-            { namespace: "custom", key: "wax_type" },
-            { namespace: "custom", key: "dimensions" }
-          ]) {
-            key
-            value
-          }
-          variants(first: 15) {
-            edges {
-              node {
-                id
-                title
-                availableForSale
-                quantityAvailable
-                priceV2 {
-                  amount
-                  currencyCode
+    try {
+      const gql = `
+        query getProductByHandle($handle: String!) {
+          product(handle: $handle) {
+            id
+            title
+            handle
+            description
+            descriptionHtml
+            availableForSale
+            productType
+            tags
+            metafields(identifiers: [
+              { namespace: "custom", key: "burn_time" },
+              { namespace: "custom", key: "fragrance_notes" },
+              { namespace: "custom", key: "wax_type" },
+              { namespace: "custom", key: "dimensions" }
+            ]) {
+              key
+              value
+            }
+            variants(first: 15) {
+              edges {
+                node {
+                  id
+                  title
+                  availableForSale
+                  quantityAvailable
+                  priceV2 {
+                    amount
+                    currencyCode
+                  }
+                  compareAtPriceV2 {
+                    amount
+                    currencyCode
+                  }
+                  sku
                 }
-                compareAtPriceV2 {
-                  amount
-                  currencyCode
-                }
-                sku
               }
             }
-          }
-          images(first: 10) {
-            edges {
-              node {
-                url
-                altText
+            images(first: 10) {
+              edges {
+                node {
+                  url
+                  altText
+                }
               }
             }
           }
         }
-      }
-    `;
+      `;
 
-    const data = await this.request(gql, { handle });
-    if (!data?.product) return null;
-    return this.formatProduct(data.product);
+      const data = await this.request(gql, { handle });
+      if (data?.product) return this.formatProduct(data.product);
+    } catch (err) {
+      console.warn(`[ShopifyService] Live Shopify product query failed (${err.message}). Checking local fallback.`);
+    }
+
+    const products = this.getFallbackProducts();
+    return products.find(p => p.handle === handle || String(p.id) === String(handle)) || null;
   }
 
   /**
    * Fetch collections from Shopify
    */
   static async getCollections(first = 20) {
-    const gql = `
-      query getCollections($first: Int!) {
-        collections(first: $first) {
-          edges {
-            node {
-              id
-              title
-              handle
-              description
-              image {
-                url
-                altText
+    try {
+      const gql = `
+        query getCollections($first: Int!) {
+          collections(first: $first) {
+            edges {
+              node {
+                id
+                title
+                handle
+                description
+                image {
+                  url
+                  altText
+                }
               }
             }
           }
         }
-      }
-    `;
+      `;
 
-    const data = await this.request(gql, { first });
-    return (data?.collections?.edges || []).map(e => e.node);
+      const data = await this.request(gql, { first });
+      if (data?.collections?.edges?.length > 0) {
+        return (data.collections.edges || []).map(e => e.node);
+      }
+    } catch (err) {
+      console.warn(`[ShopifyService] Live Shopify collections query failed (${err.message}). Returning fallback categories.`);
+    }
+
+    return [
+      { id: 'cat_1', title: 'Premium Luxury Candles', handle: 'luxury-candles', available: true },
+      { id: 'cat_2', title: 'Metal Collection', handle: 'metal-collection', available: true },
+      { id: 'cat_3', title: 'Glass Jar Collection', handle: 'glass-jar-collection', available: true },
+      { id: 'cat_4', title: 'Diffusers and Aromas', handle: 'diffusers-aromas', available: true },
+      { id: 'cat_5', title: 'Wooden Collection', handle: 'wooden-collection', available: true },
+      { id: 'cat_6', title: 'Seven Chakra- Positivity collection', handle: 'seven-chakra', available: true },
+      { id: 'cat_7', title: 'Candle Accessories', handle: 'candle-accessories', available: true }
+    ];
   }
 
   /**
