@@ -1439,8 +1439,6 @@ const CANDLE_INVENTORY = [
     handle: "candle-snuffer",
     title: "Candle Snuffer",
     category: "Candle Accessories",
-    variantType: "color",
-    variantTypeLabel: "Metal Finish",
     price: 499,
     origPrice: 599,
     burn: "Lifetime Tool",
@@ -1460,59 +1458,7 @@ const CANDLE_INVENTORY = [
     ],
     desc: "Artisanal brushed brass candle snuffer with a free-pivoting bell designed to gently extinguish candle flames without blowing wax or producing unwanted smoke. Preserves cotton wicks and maintains vessel cleanliness.",
     dimensions: "21 cm Length (120g Solid Brass)",
-    stock: 45,
-    variants: [
-      {
-        id: "snuffer-brass",
-        title: "Brushed Brass",
-        colorHex: "#d4af37",
-        price: 499,
-        origPrice: 599,
-        burn: "Lifetime Tool",
-        dimensions: "21 cm Length (120g Solid Brass)",
-        available: true,
-        stock: 25,
-        badge: "NEW ARRIVAL",
-        notes: {
-          top: "Brushed Brass Luster",
-          heart: "Artisan Pivoting Bell",
-          base: "Smokeless Flame Care"
-        },
-        desc: "Artisanal brushed brass candle snuffer designed to gently extinguish candle flames without blowing wax or producing smoke.",
-        image: "asset/snuffer.jpg",
-        images: [
-          "asset/snuffer.jpg",
-          "asset/snuffer_2.jpg",
-          "asset/snuffer_3.jpg",
-          "asset/snuffer_4.jpg"
-        ]
-      },
-      {
-        id: "snuffer-black",
-        title: "Matte Black",
-        colorHex: "#1c1917",
-        price: 499,
-        origPrice: 599,
-        burn: "Lifetime Tool",
-        dimensions: "21 cm Length (120g Solid Metal)",
-        available: true,
-        stock: 20,
-        badge: "POPULAR",
-        notes: {
-          top: "Velvet Matte Black",
-          heart: "Ergonomic Long Handle",
-          base: "Clean Wick Extinguish"
-        },
-        desc: "Matte black candle snuffer crafted for refined contemporary interiors and clean extinguishing.",
-        image: "asset/snuffer_2.jpg",
-        images: [
-          "asset/snuffer_2.jpg",
-          "asset/snuffer.jpg",
-          "asset/snuffer_3.jpg",
-          "asset/snuffer_4.jpg"
-        ]
-      }
-    ]
+    stock: 45
   },
 
   // 21. WICK TRIMMER
@@ -1521,8 +1467,6 @@ const CANDLE_INVENTORY = [
     handle: "wick-trimmer",
     title: "Wick Trimmer",
     category: "Candle Accessories",
-    variantType: "color",
-    variantTypeLabel: "Metal Finish",
     price: 549,
     origPrice: 649,
     burn: "Lifetime Tool",
@@ -1542,59 +1486,7 @@ const CANDLE_INVENTORY = [
     ],
     desc: "Heavyweight brass candle wick trimmer featuring angled cutting jaws and a built-in debris collection reservoir. Effortlessly trims cotton wicks to the optimal 1/4-inch length before every lighting to eliminate soot, prevent mushrooming, and extend burn duration.",
     dimensions: "18 × 6 × 3 cm (140g Metal)",
-    stock: 40,
-    variants: [
-      {
-        id: "wick-trimmer-gold",
-        title: "Brushed Gold",
-        colorHex: "#d4af37",
-        price: 549,
-        origPrice: 649,
-        burn: "Lifetime Tool",
-        dimensions: "18 × 6 × 3 cm (140g Metal)",
-        available: true,
-        stock: 22,
-        badge: "BESTSELLER",
-        notes: {
-          top: "Brushed Gold Finish",
-          heart: "Angled Precision Shears",
-          base: "Prevents Soot & Smoke"
-        },
-        desc: "Heavyweight brushed gold wick trimmer featuring angled cutting jaws and debris collection reservoir.",
-        image: "asset/wick trimmer.jpg",
-        images: [
-          "asset/wick trimmer.jpg",
-          "asset/wick trimmer_2.jpg",
-          "asset/wick trimmer_3.jpg",
-          "asset/wick trimmer_4.jpg"
-        ]
-      },
-      {
-        id: "wick-trimmer-black",
-        title: "Matte Black",
-        colorHex: "#1c1917",
-        price: 549,
-        origPrice: 649,
-        burn: "Lifetime Tool",
-        dimensions: "18 × 6 × 3 cm (140g Metal)",
-        available: true,
-        stock: 18,
-        badge: "NEW ARRIVAL",
-        notes: {
-          top: "Modern Matte Black",
-          heart: "Sharp Beveled Blades",
-          base: "Clean Botanical Burn"
-        },
-        desc: "Matte black precision wick trimmer engineered to maintain optimal wick length and prevent smoke.",
-        image: "asset/wick trimmer_2.jpg",
-        images: [
-          "asset/wick trimmer_2.jpg",
-          "asset/wick trimmer.jpg",
-          "asset/wick trimmer_3.jpg",
-          "asset/wick trimmer_4.jpg"
-        ]
-      }
-    ]
+    stock: 40
   }
 ];
 
