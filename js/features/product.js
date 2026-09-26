@@ -151,6 +151,30 @@ function renderPdpVariantState(product, variant) {
     dom.pdpDimensions.textContent = currentDimensions;
   }
 
+  // Adapt Fragrance Architecture card header & labels for Accessories vs Candles
+  const isAccessory = product.category && product.category.toLowerCase().includes('accessories');
+  const scentCardHeader = document.querySelector('#pdpModal .scent-card-header span');
+  const scentLabels = document.querySelectorAll('#pdpModal .scent-item .scent-label');
+  const scentFooterMeta = document.querySelector('#pdpModal .scent-footer-meta');
+
+  if (isAccessory) {
+    if (scentCardHeader) scentCardHeader.textContent = 'Craftsmanship & Care';
+    if (scentLabels[0]) scentLabels[0].textContent = 'Material & Build:';
+    if (scentLabels[1]) scentLabels[1].textContent = 'Artisan Feature:';
+    if (scentLabels[2]) scentLabels[2].textContent = 'Ritual Purpose:';
+    if (scentFooterMeta) {
+      scentFooterMeta.innerHTML = `<span><strong>Care:</strong> Lifetime Precision Tool</span><span class="dot-sep">•</span><span><strong>Craft:</strong> Solid Metal / Brass</span>`;
+    }
+  } else {
+    if (scentCardHeader) scentCardHeader.textContent = 'Fragrance Architecture';
+    if (scentLabels[0]) scentLabels[0].textContent = 'Top Notes:';
+    if (scentLabels[1]) scentLabels[1].textContent = 'Heart Notes:';
+    if (scentLabels[2]) scentLabels[2].textContent = 'Base Notes:';
+    if (scentFooterMeta) {
+      scentFooterMeta.innerHTML = `<span><strong>Burn Duration:</strong> <span id="pdpBurnTime">${currentBurn}</span></span><span class="dot-sep">•</span><span><strong>Wax:</strong> 100% Botanical Soy</span>`;
+    }
+  }
+
   // 4. Interactive Variant Selector Block
   const variantBlock = dom.pdpVariantBlock || document.getElementById('pdpVariantBlock');
   const variantTypeTitle = dom.pdpVariantTypeTitle || document.getElementById('pdpVariantTypeTitle');
