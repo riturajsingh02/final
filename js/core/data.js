@@ -1008,12 +1008,12 @@ const CANDLE_INVENTORY = [
       heart: "Gardenia, Neroli & Tuberose",
       base: "Golden Cedar & White Amber"
     },
-    image: "asset/Triple Glow Bowl Candle.JPG",
+    image: "asset/Triple Glow Bowl Candle.jpg",
     images: [
-      "asset/Triple Glow Bowl Candle.JPG",
-      "asset/Triple Glow Bowl Candle_2.JPG",
-      "asset/Triple Glow Bowl Candle_3.JPG",
-      "asset/Triple Glow Bowl Candle_4.JPG"
+      "asset/Triple Glow Bowl Candle.jpg",
+      "asset/Triple Glow Bowl Candle_2.jpg",
+      "asset/Triple Glow Bowl Candle_3.jpg",
+      "asset/Triple Glow Bowl Candle_4.jpg"
     ],
     desc: "Wide-aperture shallow ceramic bowl featuring three pure cotton wicks for a generous, luminous pool of melted botanical wax and rapid fragrance diffusion.",
     dimensions: "14 × 14 × 6.5 cm (450g Wax)",
