@@ -140,7 +140,7 @@ function renderCatalog(items) {
           <div class="km-spec-row">
             <span>⏳ ${product.burn}</span>
             <span>•</span>
-            <span>100% Botanical Soy</span>
+            <span>${product.category && product.category.toLowerCase().includes('accessories') ? 'Solid Brass &amp; Metal Care' : '100% Botanical Soy'}</span>
           </div>
 
           <div class="km-price-block">
