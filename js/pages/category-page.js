@@ -11,7 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!title || !grid) return;
   title.textContent = catName;
   if (pretitle) pretitle.textContent = 'The Candlorre • Curated Collection';
-  if (description) description.textContent = `Immerse in our hand-poured artisan selection of ${catName.toLowerCase()}, formulated with 100% natural organic soy wax and IFRA-certified therapeutic fragrance blends.`;
+  if (description) {
+    if (catName.toLowerCase().includes('accessories')) {
+      description.textContent = 'Elevate your burn ritual with our curated brass and matte-finish candle care accessories, crafted for clean burns, precise wick trimming, and graceful smokeless extinguishing.';
+    } else {
+      description.textContent = `Immerse in our hand-poured artisan selection of ${catName.toLowerCase()}, formulated with 100% natural organic soy wax and IFRA-certified therapeutic fragrance blends.`;
+    }
+  }
 
   const matchedProducts = CANDLE_INVENTORY.filter(item => item.category.toLowerCase() === catName.toLowerCase());
 
@@ -61,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="km-spec-row">
             <span>⏳ ${product.burn}</span>
             <span>•</span>
-            <span>100% Botanical Soy</span>
+            <span>${product.category && product.category.toLowerCase().includes('accessories') ? 'Solid Brass &amp; Metal Care' : '100% Botanical Soy'}</span>
           </div>
 
           <div class="km-price-block">
