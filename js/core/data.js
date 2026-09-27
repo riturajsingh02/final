@@ -436,11 +436,11 @@ const CANDLE_INVENTORY = [
     variants: [
       {
         id: "grand-boat-large",
-        title: "Large (4 Wicks)",
+        title: "Large (3 Wicks)",
         price: 2149,
         origPrice: 2299,
         burn: "70-85 Hours",
-        dimensions: "42 × 13 × 7 cm (950g Wax · 4 Wicks)",
+        dimensions: "42 × 13 × 7 cm (950g Wax · 3 Wicks)",
         available: true,
         stock: 6,
         badge: "LUXURY STATEMENT",
@@ -460,11 +460,11 @@ const CANDLE_INVENTORY = [
       },
       {
         id: "grand-boat-medium",
-        title: "Medium (3 Wicks)",
+        title: "Small (2 Wicks)",
         price: 1849,
         origPrice: 1999,
         burn: "55-65 Hours",
-        dimensions: "32 × 11 × 6 cm (650g Wax · 3 Wicks)",
+        dimensions: "32 × 11 × 6 cm (650g Wax · 2 Wicks)",
         available: true,
         stock: 6,
         badge: "BESTSELLER",
