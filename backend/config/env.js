@@ -94,9 +94,9 @@ export const config = {
   // ============================================================
   oauth: {
     google: {
-      clientId: process.env.GOOGLE_CLIENT_ID || '',
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
-      callbackUrl: process.env.GOOGLE_CALLBACK_URL || ''
+      clientId: process.env.GOOGLE_CLIENT_ID || 'd616eff469fe0791fd79a25dbf366d2b',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || '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',
+      callbackUrl: process.env.GOOGLE_CALLBACK_URL || 'http://localhost:5000/api/auth/google/callback'
     }
   },
 
